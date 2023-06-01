@@ -13,4 +13,11 @@ if x == 5:
 
     for i in range(5):
         print(1)
-
+x = 34 -23
+y = "Hello"
+z= 3.45
+if z == 3.55 or y == "Hello":
+    x = x+1
+    y = y + " Word"
+print(x)
+print(y)
