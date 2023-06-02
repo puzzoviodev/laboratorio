@@ -21,3 +21,19 @@ if z == 3.55 or y == "Hello":
     y = y + " Word"
 print(x)
 print(y)
+
+a=b=v = 3
+print(a)
+print(b)
+print(v)
+f = "fazenda"
+r = f
+f="teste"
+print(f)
+print(r)
+
+a=[1,2,3]
+b=a
+print(b)
+a.append(4)
+print(b)
