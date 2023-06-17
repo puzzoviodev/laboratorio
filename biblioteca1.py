@@ -1,6 +1,7 @@
 import math
 import random
 
+
 num2 =random.randint(1, 10)
 print(num2)
 num = int(input("digite um numero  : "))
