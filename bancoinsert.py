@@ -6,9 +6,16 @@ try:
         print(f"informacoes do banco {informacoesdobanco}")
         print("conectado!")
         comandosql = conexao.cursor()
-        comandosql.execute("SELECT database()")
-        nomebanco = comandosql.fetchone()
-        print(f"nome fo banco {nomebanco}")
+        cd = int(input("codigo da diciplina : "))
+        nd = input("nome da diciplina  : ")
+        teste = (f"insert into univap.diciplinas (codigodisc,nomedisc values ({cd},'{nd}')")
+        print(teste)
+        comandosql.execute(f"insert into univap.diciplinas (codigodisc,nomedisc) values ({cd},'{nd}')")
+        conexao.commit()
+        print("incluido com sucesso!")
+        comandosql.close()
+        conexao.close()
+
     else:
         print("banco de dados fechado!")
 
