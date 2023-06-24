@@ -3,7 +3,7 @@ from prettytable import PrettyTable
 
 grid = PrettyTable(["cod disciplina", "nome disciplina"])
 
-import mysql.connector
+
 try:
     conexao = mysql.connector.connect(host="localhost",database ="univap",user="root",password="tele")
     if conexao.is_connected():
