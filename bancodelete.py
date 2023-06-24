@@ -14,8 +14,8 @@ try:
         if comandosql.rowcount > 0:
             for registro in tabela:
                 print(f" nome da diciplina : {registro[1]}")
-            nn = input("Entre com o novo nome da dicisplina : ")
-            comandosql.execute(f" update univap.diciplinas  set nomedisc = '{nn}'  where codigodisc =  ({cd})")
+            nn = input("Entre com o reg para deletar da dicisplina : ")
+            comandosql.execute(f" delete from  univap.diciplinas  where codigodisc =  {cd}")
             conexao.commit()
         print("consulta realizada com sucesso!")
         print("alteracao  realizada com sucesso!")
