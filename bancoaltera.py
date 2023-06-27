@@ -7,19 +7,13 @@ try:
         print("conectado!")
         comandosql = conexao.cursor()
         cd = int(input("codigo da diciplina : "))
-        #teste = (f"insert into univap.diciplinas (codigodisc,nomedisc values ({cd},'{nd}')")
-        #print(teste)
         comandosql.execute(f" select * from univap.diciplinas where codigodisc =  ({cd})")
-        tabela = comandosql.fetchall()
-        if comandosql.rowcount > 0:
-            for registro in tabela:
-                print(f" nome da diciplina : {registro[1]}")
-            nn = input("Entre com o novo nome da dicisplina : ")
-            comandosql.execute(f" update univap.diciplinas  set nomedisc = '{nn}'  where codigodisc =  ({cd})")
-            conexao.commit()
-        print("consulta realizada com sucesso!")
-        print("alteracao  realizada com sucesso!")
-
+        nd = input("nome da diciplina  : ")
+        teste = (f"insert into univap.diciplinas (codigodisc,nomedisc values ({cd},'{nd}')")
+        print(teste)
+        comandosql.execute(f"insert into univap.diciplinas (codigodisc,nomedisc) values ({cd},'{nd}')")
+        conexao.commit()
+        print("incluido com sucesso!")
         comandosql.close()
         conexao.close()
 
