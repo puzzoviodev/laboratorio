@@ -19,7 +19,7 @@ try:
         conexao.close()
 
     else:
-        print("banco de dados gfechado!")
+        print("banco de dados 3gfechado!")
 
 except Exception as erro:
     print(f"erro ocorrido {erro}")
