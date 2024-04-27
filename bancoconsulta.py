@@ -14,7 +14,7 @@ try:
         if comandosql.rowcount > 0:
             for registro in tabela:
                 print(f" nome da diciplina : {registro[1]}")
-        print("consulta realizada com sucesso!")
+        print("consulta realizada com esucesso!")
         comandosql.close()
         conexao.close()
 
