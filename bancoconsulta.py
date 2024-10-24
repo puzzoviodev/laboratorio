@@ -13,7 +13,7 @@ try:
         tabela = comandosql.fetchall()
         if comandosql.rowcount > 0:
             for registro in tabela:
-                print(f" nome da diciplina : {registro[1]}")
+                print(f" nome da diciplina2 : {registro[1]}")
         print("consulta realizada com esucesso!")
         comandosql.close()
         conexao.close()
