@@ -6,11 +6,11 @@ ws = wb['vgsales']
 ws2 = wb['silvio']
 
 
-#Indicadores de Valuation
-#Indicadores de Endividamento
-#Indicadores de Eficiência
-#Indicadores de Rentabilidade
-#Indicadores de Crescimento
+#IndValuation
+#IndEndividamento
+#IndiEficiência
+#IndiRentabilidade
+#IndiCrescimento
 
 #print('Total number of rows: '+str(ws.max_row)+'. And total number of columns: '+str(ws.max_column))
 
