@@ -10,6 +10,7 @@ from openpyxl.styles.differential import DifferentialStyle
 
 
 
+
 #IndValuation
 #IndEndividamento
 #IndiEficiência
@@ -20,45 +21,41 @@ wbsaida = openpyxl.Workbook()
 #cria planilhas
 def criaPlanilaIndValuation(wbsaida):
     wbsaida.create_sheet('IndValuation')
+    IndValuation = wbsaida['IndValuation']
+    IndValuation.append(['D.Y', 'P/L', ' PEG Ratio','P/VP','EV/EBITDA','EV/EBIT','P/EBITDA','P/EBIT','VPA','P/Ativo',
+                         'LPA','P/SR','P/Ativo Circ. Liq.'])
     return
 
-def criaPlanilaIndEndividamento(wbsaida):
-    wbsaida.create_sheet('IndEndividamento')
-    return
-
-def criaPlahilhaIndiEficiência(wbsaida):
-    wbsaida.create_sheet('IndiEficiência')
-    return
-
-def criaPlanilhaIndiRentabilidade(wbsaida):
-    wbsaida.create_sheet('IndiRentabilidade')
-    return
-def criaPlanilaIndiCrescimento(wbsaida):
-    wbsaida.create_sheet('IndiCrescimento')
-    return
-#cria colunas
-
-IndValuation  =  wbsaida['IndValuation']
-IndEndividamento  = wbsaida['IndEndividamento']
-IndiEficiência  = wbsaida['IndiEficiência']
-IndiRentabilidade =  wbsaida['IndiRentabilidade']
-IndiCrescimento = wbsaida['IndiCrescimento']
-
-def criaCelulaIndValuation(IndValuation):
-    IndValuation.append(['DY', 'P/L', ' PEG Ratio','P/VP','EV/EBIT'])
-    return
 
 def criaPCelulaIndEndividamento(IndEndividamento):
-    IndEndividamento.append(['Fruta', 'Quantidade', 'Preço'])
+    wbsaida.create_sheet('IndEndividamento')
+    IndEndividamento = wbsaida['IndEndividamento']
+    IndEndividamento.append(['Dív. líquida/PL', 'Dív. líquida/EBITDA', 'Dív. líquida/EBIT','PL/Ativos','Passivos/Ativos','Liq. corrente'])
     return
 
 def criaCelulaIndiEficiência(IndiEficiência):
-    IndiEficiência.append(['Fruta', 'Quantidade', 'Preço'])
+    wbsaida.create_sheet('IndiEficiência')
+    IndiEficiência = wbsaida['IndiEficiência']
+    IndiEficiência.append(['M. Bruta', 'M. EBITDA', 'M. EBIT', 'M. Líquida'])
     return
 
 def criaCelulaIndiRentabilidade(IndiRentabilidade):
-    IndiRentabilidade.append(['Fruta', 'Quantidade', 'Preço'])
+    wbsaida.create_sheet('IndiRentabilidade')
+    IndiRentabilidade = wbsaida['IndiRentabilidade']
+    IndiRentabilidade.append(['ROE', 'ROA', 'ROIC','Giro ativos',''])
     return
 def criaCelulaIndiCrescimento(IndiCrescimento):
-    IndiCrescimento.append(['Fruta', 'Quantidade', 'Preço'])
+    wbsaida.create_sheet('IndiCrescimento')
+    IndiCrescimento = wbsaida['IndiCrescimento']
+    IndiCrescimento.append(['CAGR Receitas 5 anos', 'CAGR Lucros 5 anos'])
     return
+criaPlanilaIndValuation(wbsaida)
+criaPCelulaIndEndividamento(wbsaida)
+criaCelulaIndiEficiência(wbsaida)
+criaCelulaIndiRentabilidade(wbsaida)
+criaCelulaIndiCrescimento(wbsaida)
+
+
+
+
+wbsaida.save("exemplo2.xlsx")
