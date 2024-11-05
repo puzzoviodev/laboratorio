@@ -1,8 +1,6 @@
 import openpyxl
-from openpyxl.styles import Font
-from openpyxl.styles import Font, PatternFill
-from openpyxl.formatting.rule import Rule
-from openpyxl.styles.differential import DifferentialStyle
+from openpyxl.styles import Color, PatternFill, Font, Border
+from openpyxl.formatting.rule import ColorScaleRule, CellIsRule, FormulaRule
 
 
 
@@ -16,6 +14,12 @@ from openpyxl.styles.differential import DifferentialStyle
 #IndiCrescimento
 #wb = openpyxl.load_workbook('statusinvest2.xlsx')
 wbsaida = openpyxl.Workbook()
+#ws = wbsaida.active
+
+redFill = PatternFill(start_color='FFEE1111',
+end_color='FFEE1111',
+fill_type='solid')
+
 
 #cria planilhas
 def criaPlanilaIndValuation(wbsaida):
@@ -54,6 +58,13 @@ def gravaCelulaIndiRentabilidade(imposto,celula):
     #values = ws.cell(row=imposto, column=1).value
     var1 = 'A' + str(imposto)
     celula[var1] = 'teste1'
+    myFont = Font()
+    myBorder = Border()
+    celula.conditional_formatting.add('E1:E10',
+                                  FormulaRule(formula=['E1=0'], font=myFont, border=myBorder, fill=redFill))
+    celula['B1'] = '3.14%'
+   celula['B1'].value = '0.031400000000000004'
+     celula['B1'].number_format = '0%'
     return
 
 criaPlanilaIndValuation(wbsaida)
@@ -66,6 +77,10 @@ imposto = 1
 while imposto < 10:
     imposto = imposto + 1
     celula = wbsaida['IndiRentabilidade']
+
+
+
+
     gravaCelulaIndiRentabilidade(imposto,celula)
 
     print(imposto)
