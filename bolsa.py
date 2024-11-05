@@ -61,7 +61,7 @@ def gravaCelulaIndiRentabilidade(imposto,wsIndiRentabilidade,te1):
     porcentagem = nota / 100
     #celula[var1] = porcentagem
 
-    #porcentagem_cell = celula[var1] # ws.cell(row=i, column=3, value=porcentagem)
+    #porcentagem_cell = celula[var1] # ws.cell(row=i, column=3, value=porcentagem) b
     #porcentagem_cell =  celula.cell(row=imposto, column=1, value=porcentagem)
     # Definir o formato de porcentagem
     #porcentagem_cell.number_format = '0%'  # Formato de porcentagem
