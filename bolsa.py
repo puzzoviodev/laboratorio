@@ -53,18 +53,19 @@ def criaCelulaIndiCrescimento(IndiCrescimento):
     IndiCrescimento.append(['CAGR Receitas 5 anos', 'CAGR Lucros 5 anos'])
     return
 
-def gravaCelulaIndiRentabilidade(imposto,celula):
+def gravaCelulaIndiRentabilidade(imposto,wsIndiRentabilidade,te1):
 
     #values = ws.cell(row=imposto, column=1).value
-    var1 = 'A' + str(imposto)
-    celula[var1] = 'teste1'
-    myFont = Font()
-    myBorder = Border()
-    celula.conditional_formatting.add('E1:E10',
-                                  FormulaRule(formula=['E1=0'], font=myFont, border=myBorder, fill=redFill))
-    celula['B1'] = '3.14%'
-   celula['B1'].value = '0.031400000000000004'
-     celula['B1'].number_format = '0%'
+   # var1 = 'A' + str(imposto)
+    nota = imposto + te1
+    porcentagem = nota / 100
+    #celula[var1] = porcentagem
+
+    #porcentagem_cell = celula[var1] # ws.cell(row=i, column=3, value=porcentagem)
+    #porcentagem_cell =  celula.cell(row=imposto, column=1, value=porcentagem)
+    # Definir o formato de porcentagem
+    #porcentagem_cell.number_format = '0%'  # Formato de porcentagem
+    wsIndiRentabilidade.cell(row=imposto, column=1, value=porcentagem).number_format = '0%'  # Formato de porcentagem
     return
 
 criaPlanilaIndValuation(wbsaida)
@@ -73,16 +74,17 @@ criaCelulaIndiEficiência(wbsaida)
 criaCelulaIndiRentabilidade(wbsaida)
 criaCelulaIndiCrescimento(wbsaida)
 
-imposto = 1
-while imposto < 10:
-    imposto = imposto + 1
-    celula = wbsaida['IndiRentabilidade']
+linha = 1
+while linha < 10:
+    linha = linha + 1
+    wsIndiRentabilidade = wbsaida['IndiRentabilidade']
+    wsIndValuation = wbsaida['IndValuation']
+    wsIndEndividamento = wbsaida['Endividamento']
+    wsIndiEficiência = wbsaida['IndiEficiência']
+    wsIndiCrescimento = wbsaida['IndiCrescimento']
 
+    gravaCelulaIndiRentabilidade(linha,wsIndiRentabilidade,1)
 
-
-
-    gravaCelulaIndiRentabilidade(imposto,celula)
-
-    print(imposto)
+    print(linha)
 
 wbsaida.save("exemplo2.xlsx")
