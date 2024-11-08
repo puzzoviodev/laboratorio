@@ -2,7 +2,17 @@ import openpyxl
 from openpyxl.styles import Color, PatternFill, Font, Border
 from openpyxl.formatting.rule import ColorScaleRule, CellIsRule, FormulaRule
 
+#url do site que será feita a coleta dos dados
+url = 'https://www.fundamentus.com.br/resultado.php'
 
+#simulação de conexão comum evitando que sistema do site entenda que é um bot bloqueando o acesso
+headers = {
+    'User-Agent'      : 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/71.0.3578.98 Safari/537.36',
+    'Accept'          : 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
+    'Accept-Language' : 'en-US,en;q=0.5',
+    'DNT'             : '1',
+    'Connection'      : 'close'
+}
 
 
 

@@ -29,10 +29,11 @@ tabela = soup.find('table')
 
 #criando o Data Frame
 
-
+teste = 0
 for row in tabela.tbody.find_all('tr'): # a tag <tr>
     #buscando todas as colunas de cada linha
-
+    teste = teste + 1
+    print ("contator  "   + str(teste))
     columns = row.find_all('td')  # a tag <td>
     if(columns != []):
         papel = columns[0].text.strip(' ')
