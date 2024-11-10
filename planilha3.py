@@ -1,9 +1,9 @@
 import openpyxl
 
-wb = openpyxl.load_workbook('videogamesales.xlsx')
+wb = openpyxl.load_workbook('statusinvest2.xlsx')
 
-ws = wb['vgsales']
-ws2 = wb['silvio']
+ws = wb['st']
+#ws2 = wb['silvio']
 
 
 #IndValuation
@@ -31,13 +31,14 @@ while imposto < 10:
     imposto = imposto + 1
 
    # print(imposto)
-    values = ws.cell(row=imposto, column=2).value
+    values = ws.cell(row=imposto, column=1).value
+    print(" valoe  "  + values)
     print(imposto)
     var = 'K' + str(imposto)
     var1= 'A' + str(imposto)
    # print(var)
     ws[var] = values
-    ws2[var1] = values
-    retorno1 = Myfun(imposto)
+    #ws2[var1] = values
+   # retorno1 = Myfun(imposto)
 #
-wb.save('videogamesales.xlsx')
+#wb.save('videogamesales.xlsx')

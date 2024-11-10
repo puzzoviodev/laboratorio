@@ -90,10 +90,22 @@ def processamento():
         columns = row.find_all('td')  # a tag <td>
         ida = "teste"  # "#columns[0].text.strip(' ')
         # Grava ROE
-        gravaIndiRentabilidade(wsIndiRentabilidade, contador, 1, (columns[16].text.strip(' ')))
+        gravaIndiRentabilidade(wsIndiRentabilidade, contador, 1, (columns[0].text.strip(' ')))
         # Grava ROIC
         gravaIndiRentabilidade(wsIndiRentabilidade, contador, 2, (columns[15].text.strip(' ')))
 
+        gravaIndiRentabilidade(wsIndiRentabilidade, contador, 3, (columns[3].text.strip(' ')))
+        gravaIndiRentabilidade(wsIndiRentabilidade, contador, 4, (columns[4].text.strip(' ')))
+        gravaIndiRentabilidade(wsIndiRentabilidade, contador, 5, (columns[5].text.strip(' ')))
+        gravaIndiRentabilidade(wsIndiRentabilidade, contador, 6, (columns[6].text.strip(' ')))
+        gravaIndiRentabilidade(wsIndiRentabilidade, contador, 7, (columns[7].text.strip(' ')))
+        gravaIndiRentabilidade(wsIndiRentabilidade, contador, 8, (columns[8].text.strip(' ')))
+        gravaIndiRentabilidade(wsIndiRentabilidade, contador, 9, (columns[9].text.strip(' ')))
+        gravaIndiRentabilidade(wsIndiRentabilidade, contador, 10, (columns[10].text.strip(' ')))
+        gravaIndiRentabilidade(wsIndiRentabilidade, contador, 11, (columns[11].text.strip(' ')))
+        gravaIndiRentabilidade(wsIndiRentabilidade, contador, 12, (columns[12].text.strip(' ')))
+        gravaIndiRentabilidade(wsIndiRentabilidade, contador, 13, (columns[13].text.strip(' ')))
+        gravaIndiRentabilidade(wsIndiRentabilidade, contador, 14, (columns[14].text.strip(' ')))
 
         # wsIndiRentabilidade.cell(row=teste, column=1, value=columns[0].text.strip(' '))
         # wsIndiRentabilidade.cell(row=teste, column=2, value=columns[1].text.strip(' '))
