@@ -1,0 +1,1821 @@
+
+<!doctype html>
+<html lang="pt-BR">
+<head>
+	<meta charset="iso-8859-1">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<meta property="og:title" content="Fundamentus" />
+	<meta property="og:url" content="http://www.fundamentus.com.br" />
+	<meta property="og:image" content="http://www.noema.com.br/-/fundamentus/m/assets/img/fundamentus-simbolo.png" />
+	<meta property="og:image:width" content="500" />
+	<meta property="og:image:height" content="500" />
+	<meta property="og:site_name" content="Fundamentus" />
+	<meta property="og:description" content="Invista consciente" />
+
+	<link rel="apple-touch-icon" sizes="180x180" href="assets/favicon/apple-touch-icon.png">
+	<link rel="icon" type="image/png" sizes="32x32" href="assets/favicon/favicon-32x32.png">
+	<link rel="icon" type="image/png" sizes="16x16" href="assets/favicon/favicon-16x16.png">
+	<link rel="manifest" href="assets/favicon/site.webmanifest">
+	<link rel="mask-icon" href="assets/favicon/safari-pinned-tab.svg" color="#0037c1">
+	<meta name="msapplication-TileColor" content="#ffffff">
+	<meta name="theme-color" content="#0037c1">
+
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+	<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+	<link href="assets/css/fundamentus_v2.css" rel="stylesheet">
+	<link rel="preconnect" href="https://fonts.gstatic.com">
+	<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&family=Oswald&family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;0,900;1,300;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
+
+	<title>Fundamentus - Invista Consciente - Indicadores Financeiros e Fundamentalistas - VALE3</title>
+</head>  <body class="acao">
+	  <script type="text/javascript" src="assets/autocomplete/mootools.svn.js" language="JavaScript"></script>
+  <script type="text/javascript" src="assets/autocomplete/Observer.js" language="JavaScript"></script>
+  <script type="text/javascript" src="assets/autocomplete/Autocompleter.js"></script>
+  <script defer type="text/javascript" src="assets/autocomplete/cmplte.php" language="JavaScript"></script>
+
+
+	<div class="header">
+		<div class="container">
+			<div class="logo-container">
+				<a class="logo-ico" href=".">Fundamentus</a>
+				<a class="logo-fundamentus" href=".">Invista consciente</a>
+								<span class="header-acao-papel">VALE3</span>
+				      </div>
+			<div class="search">
+				<form class="search-form" method="get" action="detalhes.php">
+					<input name="papel" type="text" class="search-input" id="completar" autocomplete="off" spellcheck="false">
+					<input name="h" value="1" type="hidden">
+				</form>
+				<span class="search-close">fechar</span>
+			</div>
+			<div class="header-nav">
+				<ul class="menu menu_">
+					<li><a class="menu-item" href=".">Home</a></li>
+					<li><a class="menu-item" href="consciente.php">Investimento consciente</a></li>
+					<li class="has-submenu"><span class="menu-item">Ações</span>
+						<ul>
+							<li><a class="menu-item" href="fr.php">Fatos relevantes</a></li>
+							<li><a class="menu-item" href="ultimos-resultados.php">Últimos resultados</a></li>
+							<li><a class="menu-item" href="altas-baixas.php">Maiores Altas e Baixas</a></li>
+						</ul>
+					</li>
+					<li class="has-submenu"><span class="menu-item">FIIS</span>
+						<ul>
+							<li><a class="menu-item " href="fii_imoveis.php">Pesquisar Imóveis</a></li>
+							<li><a class="menu-item" href="fii_altas-baixas.php">Maiores Altas e Baixas</a></li>
+						</ul>
+					</li>
+					<li><a class="menu-item fundamentus-classico" href="?papel=VALE3&interface=classic">Fundamentus Clássico</a></li>
+				</ul>
+				<div class="busca-avancada">
+					<span class="busca-avancada-label">Busca<br> avançada por</span>
+					<a href="buscaavancada.php">empresa</a>
+					<a href="fii_buscaavancada.php">fii</a>
+				</div>
+			</div>
+		</div>
+		<div class="ico-menu"><span></span></div>
+		<div class="fundamentus-bar"><span class="fb-azul"></span><span class="fb-verde"></span></div>
+	</div>
+		<div class="main">
+
+      <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+<style>
+#chart {
+  max-width: 760px;
+  margin: 35px auto;
+  opacity: 0.7;
+}
+
+.arrow_box {
+  position: relative;
+  background: #dfeaf0a3;
+  border: 1px solid #77b2d288;
+  padding: 5px;
+  border-radius: 7px;
+  font-size: 14px;
+}
+.arrow_box:after, .arrow_box:before {
+  right: 100%;
+  top: 50%;
+  border: solid transparent;
+/*  content: " ";*/
+  height: 0;
+  width: 0;
+  position: absolute;
+  pointer-events: none;
+}
+.apexcharts-tooltip.apexcharts-theme-light {
+    border: 0px solid #e3e3e3;
+    background: rgba(255, 255, 255, 0);
+}
+
+.arrow_box:after {
+  border-color: rgba(85, 85, 85, 0);
+  border-right-color: #555;
+  border-width: 10px;
+  margin-top: -10px;
+}
+.arrow_box:before {
+  border-color: rgba(0, 0, 0, 0);
+  border-right-color: #000000;
+  border-width: 13px;
+  margin-top: -13px;
+}
+
+#chart .apexcharts-tooltip {
+  color: #fff;
+  transform: translateX(10px) translateY(10px);
+  overflow: visible !important;
+  white-space: normal !important;
+}
+
+#chart .apexcharts-tooltip span {
+  padding: 5px 10px;
+  display: inline-block;
+}
+</style>
+
+    <div class="autocomplete" style="position: fixed; top:0;left:0;right:0;bottom:0; color:gray; z-index:30;">
+    </div>
+
+    		<div class="header-acao-wrapper">
+			<div class="container">
+				<div class="header-acao">
+					<div class="header-acao-title">
+						<h1 class="acao-papel">VALE3</h1>
+						<span class="acao-nome">VALE</span>
+					</div>
+					<div class="header-acao-nav">
+						<ul class="menu menu_">
+							<li><a class="menu-item active" href="detalhes.php?papel=VALE3&h=1">Detalhes</a></li>
+							<li class="has-submenu"><span class="menu-item" onclick="">Gráficos</span>
+								<ul>
+									<li><a class="menu-item" href="graficos.php?papel=VALE3&tipo=1">Balanço patrimonial</a></li>
+									<li><a class="menu-item" href="graficos.php?papel=VALE3&tipo=2">Demonstrativos de resultados</a></li>
+									<li><a class="menu-item" href="graficos.php?papel=VALE3&tipo=4">Fluxo de caixa</a></li>
+									<li><a class="menu-item" href="graficos.php?papel=VALE3&tipo=3">Indicadores fundamentalistas</a></li>
+								</ul>
+							</li>
+							<li class="has-submenu"><span class="menu-item" onclick="">INFO<span class="rmacoes">RMAÇÕES</span></span>
+								<ul>
+									<li><a class="menu-item" href="acionistas.php?papel=VALE3">Acionistas</a></li>
+									<li><a class="menu-item" href="principais_acionistas.php?papel=VALE3">Principais Acionistas</a></li>
+									<li><a class="menu-item" href="administradores.php?papel=VALE3">Administração</a></li>
+									<li><a class="menu-item" href="fatos_relevantes.php?papel=VALE3">Fatos Relevantes</a></li>
+									<li><a class="menu-item" href="apresentacoes.php?papel=VALE3">Apresentações</a></li>
+									<li><a class="menu-item" href="resultados_trimestrais.php?papel=VALE3">Resultados Trim.</a></li>
+									<li><a class="menu-item" href="formularios_referencia.php?papel=VALE3">Form. Referência</a></li>
+									<li><a class="menu-item" href="insiders.php?papel=VALE3">Insiders</a></li>
+									<li><a class="menu-item" href="recompras.php?papel=VALE3">Recompras</a></li>
+									<li><a class="menu-item" href="balancos.php?papel=VALE3">Balanços em Excel</a></li>
+									<li><a class="menu-item" href="proventos.php?papel=VALE3">Proventos</a></li>
+								</ul>
+							</li>
+							<li><a class="menu-item" href="cotacoes.php?papel=VALE3">Cotações</a></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>		<div class="container">
+			<div class="frame">
+				<div class="row">
+					<div class="col-sm-auto">
+						<div class="data">
+							<span class="data-title">Valor de mercado <span class="data-tooltip" data-toggle="tooltip" title="Valor de mercado da empresa, calculado multiplicando o preço da ação pelo número total de ações.">?</span></span>
+              <span class="data-value"><span class="currency">R$</span> 275.200.000.000</span>
+						</div>
+					</div>
+					<div class="col-sm-auto">
+						<div class="data">
+							<span class="data-title">Valor da firma <span class="data-tooltip" data-toggle="tooltip" title="Valor da firma (Enterprise Value) é calculado somando o valor de mercado da empresa a sua dívida líquida.">?</span></span>
+              <span class="data-value"><span class="currency">R$</span> 327.152.000.000 </span>
+						</div>
+					</div>
+					<div class="col-sm-auto">
+						<div class="data">
+							<span class="data-title">Nº de ações <span class="data-tooltip" data-toggle="tooltip" title="Número total de ações, somadas todas as espécies: ON, PN, etc.">?</span></span>
+              <span class="data-value">4.539.010.000</span>
+						</div>
+					</div>
+					<div class="col-sm-auto">
+						<div class="data">
+							<span class="data-title">Último balanço <span class="data-tooltip" data-toggle="tooltip" title="Data do último balanço divulgado pela empresa que consta no nosso banco de dados. Todos os indicadores são calculados considerando os últimos 12 meses finalizados na data deste balanço.">?</span></span>
+              <span class="data-value">30/09/2024</span>
+						</div>
+					</div>
+					<div class="col-sm-auto">
+						<div class="data">
+							<span class="data-title">Setor <span class="data-tooltip" data-toggle="tooltip" title="Classificação setorial.">?</span></span>
+              <span class="data-value"><a href="resultado.php?setor=27">Mineração</a></span>
+						</div>
+					</div>
+					<div class="col-sm-auto">
+						<div class="data">
+							<span class="data-title">Subsetor <span class="data-tooltip" data-toggle="tooltip" title="Classificação por segmento de atuação.">?</span></span>
+              <span class="data-value"><a href="resultado.php?segmento=48">Minerais Metálicos</a></span>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-sm-auto">
+					<div class="frame-cotacao">
+						<div class="data">
+							<span class="data-title">Cotação <span class="data-tooltip" data-toggle="tooltip" title="Cotação de fechamento da ação no último pregão.">?</span></span>
+							<span class="data-value cotacao-preco"><span class="currency">R$</span>60,63</span>
+						</div>
+						<div class="data">
+							<span class="data-title">Última cotação <span class="data-tooltip" data-toggle="tooltip" title="Data do último pregão em  que o ativo foi negociado.">?</span></span>
+							<span class="data-value">
+                08/11/2024
+              </span>
+						</div>
+					</div>
+				</div>
+				<div class="col col-xl-auto">
+					<div class="frame">
+            <div class="row">
+              <div class="col col-xl-auto vpalpa2-estilo">
+                <div class="row" style="margin-bottom:14px">
+                  <div class="col-auto">
+                    <div class="data">
+                      <span class="data-title">Tipo <span class="data-tooltip" data-toggle="tooltip" title="ON = Ordinária, PN = Preferencial, PNA = Pref. tipo A, etc.">?</span></span>
+                      <span class="data-value">ON NM</span>
+                    </div>
+                  </div>
+                  <div class="col-sm-auto">
+                    <div class="data">
+                      <span class="data-title">Volume negociado por dia <span class="data-tooltip" data-toggle="tooltip" title="Valor médio de negociação diária da ação, considerando os últimos 2 meses (R$).">?</span></span>
+                      <span class="data-value"><span class="currency">R$</span> 1.419.480.000</span>
+                    </div>
+                  </div>
+                  <style>
+                    @media (min-width: 1200px) {
+                      .vpalpa2-estilo {
+                        border-right: 1px solid #e8e8e8;
+                        padding-right: 0px;
+                        margin-right: 9px;
+                      }
+                    }
+                    .vpalpa {
+                      display:none;
+                    }
+                    .vpalpa2 {
+                      display:block;
+                    }
+                    @media (max-width: 1200px) {
+                      .vpalpa {
+                        display:block;
+                      }
+                      .vpalpa2 {
+                        display:none;
+                      }
+
+                    }
+                  </style>
+                  <div class="col-md col-12 vpalpa">
+                    <div class="row">
+                      <div class="col-auto">
+                        <div class="data">
+                          <span class="data-title">VPA <span class="data-tooltip" data-toggle="tooltip" title="Valor Patrimonial por Ação: Valor do Patrimônio Líquido dividido pelo número total de ações.">?</span></span>
+                          <span class="data-value">45,95</span>
+                        </div>
+                      </div>
+                      <div class="col-auto">
+                        <div class="data">
+                          <span class="data-title">LPA <span class="data-tooltip" data-toggle="tooltip" title="Lucro por Ação.">?</span></span>
+                          <span class="data-value">10,63</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-sm-auto">
+                    <div class="data variacao">
+                      <span class="data-title">Variação 52 semanas</span>
+                      <div class="data">
+                        <span class="data-value"><span class="currency">R$</span> 56,00</span>
+                        <span class="data-text">mínimo <span class="data-tooltip" data-toggle="tooltip" title="Menor cotação da ação nos últimos 12 meses.">?</span></span>
+                      </div>
+                      <div class="oscilacao-bar"></div>
+                      <div class="data">
+                        <span class="data-value"><span class="currency">R$</span> 71,86</span>
+                        <span class="data-text">máximo <span class="data-tooltip" data-toggle="tooltip" title="Maior cotação da ação nos últimos 12 meses.">?</span></span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-auto vpalpa2">
+                  <div class="row" style="margin-bottom:30px">
+                    <div class="col">
+                      <div class="data">
+                        <span class="data-title">VPA <span class="data-tooltip" data-toggle="tooltip" title="Valor Patrimonial por Ação: Valor do Patrimônio Líquido dividido pelo número total de ações.">?</span></span>
+                        <span class="data-value">45,95</span>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col">
+                      <div class="data">
+                        <span class="data-title">LPA <span class="data-tooltip" data-toggle="tooltip" title="Lucro por Ação.">?</span></span>
+                        <span class="data-value">10,63</span>
+                      </div>
+                    </div>
+                  </div>
+              </div>
+
+            </div>
+					</div>
+				</div>
+				<div class="col-xl col-lg-12">
+					<div class="frame">
+            <div class="oscilacoes">
+              <h3 class="data-title">Oscilações</h3>
+              <div class="row" style="margin-bottom:24px;">
+                <div class="col-sm-auto col-4">
+                  <div class="data">
+                    <span class="data-value">
+                    <font color="#F75D59">-4,61 <span class="porcentagem">%</span></font></span>
+                    <span class="data-text">dia</span>
+                  </div>
+                </div>
+                <div class="col-sm-auto col-4">
+                  <div class="data">
+                    <span class="data-value"><font color="#F75D59">-2,95 <span class="porcentagem">%</span></font></span>
+                    <span class="data-text">mês</span>
+                  </div>
+                </div>
+                <div class="col-sm-auto col-4">
+                  <div class="data">
+                    <span class="data-value"><font color="#F75D59">-3,81 <span class="porcentagem">%</span></font></span>
+                    <span class="data-text">30 dias</span>
+                  </div>
+                </div>
+                <div class="col-sm-auto col-4">
+                  <div class="data">
+                    <span class="data-value"><font color="#F75D59">-4,08 <span class="porcentagem">%</span></font></span>
+                    <span class="data-text">12 meses</span>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-sm-auto col-4">
+                  <div class="data">
+                    <span class="data-value"><font color="#F75D59">-15,41 <span class="porcentagem">%</span></font></span>
+                    <span class="data-text">2024</span>
+                  </div>
+                </div>
+                <div class="col-sm-auto col-4">
+                  <div class="data">
+                    <span class="data-value"><font color="#F75D59">-6,29 <span class="porcentagem">%</span></font></span>
+                    <span class="data-text">2023</span>
+                  </div>
+                </div>
+                <div class="col-sm-auto col-4">
+                  <div class="data">
+                    <span class="data-value"><font color="#215be4">24,46 <span class="porcentagem">%</span></font></span>
+                    <span class="data-text">2022</span>
+                  </div>
+                </div>
+                <div class="col-sm-auto col-4">
+                  <div class="data">
+                    <span class="data-value"><font color="#215be4">4,73 <span class="porcentagem">%</span></font></span>
+                    <span class="data-text">2021</span>
+                  </div>
+                </div>
+                <div class="col-sm-auto col-4">
+                  <div class="data">
+                    <span class="data-value"><font color="#215be4">70,47 <span class="porcentagem">%</span></font></span>
+                    <span class="data-text">2020</span>
+                  </div>
+                </div>
+                <div class="col-sm-auto col-4">
+                  <div class="data">
+                    <span class="data-value"><font color="#215be4">6,66 <span class="porcentagem">%</span></font></span>
+                    <span class="data-text">2019</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+					</div>
+				</div>
+      </div>
+			<div class="row chart-historico-cotacoes">
+        <div class="col">
+          <div class="frame">
+            <div id="chartHistoricoCotacoes"></div>
+          </div>
+        </div>
+      </div>
+			<div class="row">
+				<div class="col">
+					<div class="frame">
+						<h2 class="session-title">Indicadores de valuation</h2>
+						<div class="row">
+							<div class="col-6 col-sm-4 col-md-2">
+								<div class="data">
+									<span class="data-title">P/L <span class="data-tooltip" data-toggle="tooltip" title="Preço da ação dividido pelo lucro por ação. O P/L é o número de anos que se levaria para reaver o capital aplicado na compra de uma ação, através do recebimento do lucro gerado pela empresa, considerando que esses lucros permaneçam constantes.">?</span></span>
+									<span class="data-value">5,70</span>
+								</div>
+              </div>
+							<div class="col-6 col-sm-4 col-md-2">
+								<div class="data">
+									<span class="data-title">P/VP <span class="data-tooltip" data-toggle="tooltip" title="Preço da ação dividido pelo Valor Patrimonial por ação. Informa quanto o mercado está disposto a pagar sobre o Patrimônio Líquido da empresa.">?</span></span>
+									<span class="data-value">1,32</span>
+								</div>
+              </div>
+							<div class="col-6 col-sm-4 col-md-2">
+								<div class="data">
+									<span class="data-title">P/EBIT <span class="data-tooltip" data-toggle="tooltip" title="" data-original-title="Preço da ação dividido pelo EBIT por ação. EBIT é o Lucro antes dos Impostos e Despesas Financeiras. É uma boa aproximação do lucro operacional da empresa.">?</span></span>
+									<span class="data-value">3,46</span>
+								</div>
+              </div>
+							<div class="col-6 col-sm-4 col-md-2">
+								<div class="data">
+									<span class="data-title">PSR <span class="data-tooltip" data-toggle="tooltip" title="" data-original-title="Price Sales Ratio: Preço da ação dividido pela Receita Líquida por ação.">?</span></span>
+									<span class="data-value">1,30</span>
+								</div>
+              </div>
+							<div class="col-6 col-sm-4 col-md-2">
+								<div class="data">
+									<span class="data-title">Preço/Ativos <span class="data-tooltip" data-toggle="tooltip" title="" data-original-title="Preço da ação dividido pelos Ativos totais por ação.">?</span></span>
+									<span class="data-value">0,57</span>
+								</div>
+              </div>
+							<div class="col-6 col-sm-4 col-md-2">
+								<div class="data">
+									<span class="data-title">Preço/Ativ circ liq <span class="data-tooltip" data-toggle="tooltip" title="" data-original-title="Preço da ação dividido pelos Ativos Circulantes Líquidos por ação. Ativo Circ. Líq. é obtido subtraindo os ativos circulantes pelas dívidas de curto e longo prazo, ou seja, após o pagamento de todas as dívidas, quanto sobraria dos ativos mais líquidos da empresa (caixa, estoque, etc).">?</span></span>
+									<span class="data-value">-1,43</span>
+								</div>
+							</div>
+							<div class="col-6 col-sm-4 col-md-2">
+								<div class="data">
+									<span class="data-title">Dividend Yield <span class="data-tooltip" data-toggle="tooltip" title="" data-original-title="Dividendo pago por ação dividido pelo preço da ação. É o rendimento gerado para o dono da ação pelo pagamento de dividendos.">?</span></span>
+									<span class="data-value">11,8 <span class="porcentagem">%</span></span>
+								</div>
+							</div>
+							<div class="col-6 col-sm-4 col-md-2">
+								<div class="data">
+									<span class="data-title">EV/EBITDA <span class="data-tooltip" data-toggle="tooltip" title="" data-original-title="Valor da Firma (Enterprise Value dividido pelo EBITDA.">?</span></span>
+									<span class="data-value">3,42</span>
+								</div>
+							</div>
+							<div class="col-6 col-sm-4 col-md-2">
+								<div class="data">
+									<span class="data-title">EV/EBIT <span class="data-tooltip" data-toggle="tooltip" title="" data-original-title="Valor da Firma (Enterprise Value dividido pelo EBIT.">?</span></span>
+									<span class="data-value">4,11</span>
+								</div>
+							</div>
+							<div class="col-6 col-sm-4 col-md-2">
+								<div class="data">
+									<span class="data-title">Preço/Capital de giro <span class="data-tooltip" data-toggle="tooltip" title="" data-original-title="Preço da ação dividido pelo capital de giro por ação. Capital de giro é o Ativo Circulante menos Passivo Circulante.">?</span></span>
+									<span class="data-value">-36,78</span>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+      </div>
+
+      <div class="row">
+				<div class="col">
+					<div class="frame">
+						<h2 class="session-title">Indicadores de rentabilidade</h2>
+						<div class="row">
+							<div class="col-6 col-sm-4 col-md-2">
+								<div class="data">
+									<span class="data-title">ROE <span class="data-tooltip" data-toggle="tooltip" title="" data-original-title="Retorno sobre o Patrimônio Líquido: Lucro líquido dividido pelo Patrimônio Líquido.">?</span></span>
+									<span class="data-value">23,1<span class="porcentagem">%</span></span>
+								</div>
+							</div>
+							<div class="col-6 col-sm-4 col-md-2">
+								<div class="data">
+									<span class="data-title">ROIC <span class="data-tooltip" data-toggle="tooltip" title="" data-original-title="Retorno sobre o Capital Investido: Calculado dividindo-se o EBIT por (Ativos - Fornecedores - Caixa). Informa o retorno que a empresa consegue sobre o capital total aplicado.">?</span></span>
+									<span class="data-value">18,5 <span class="porcentagem">%</span></span>
+								</div>
+							</div>
+							<div class="col-6 col-sm-4 col-md-2">
+								<div class="data">
+									<span class="data-title">EBIT/Ativo <span class="data-tooltip" data-toggle="tooltip" title="" data-original-title="EBIT dividido por Ativos totais.">?</span></span>
+									<span class="data-value">16,4</span>
+								</div>
+							</div>
+							<div class="col-6 col-sm-4 col-md-2">
+								<div class="data">
+									<span class="data-title">Crescimento receita <span class="data-tooltip" data-toggle="tooltip" title="" data-original-title="Crescimento da Receita Líquida nos últimos 5 anos.">?</span></span>
+									<span class="data-value">0,4 <span class="porcentagem">%</span></span>
+								</div>
+							</div>
+							<div class="col-6 col-sm-4 col-md-2">
+								<div class="data">
+									<span class="data-title">Giro ativos <span class="data-tooltip" data-toggle="tooltip" title="" data-original-title="Receita Líquida dividido por Ativos Totais. Indica a eficiência com a qual a empresa usa seus ativos para gerar vendas.">?</span></span>
+									<span class="data-value">0,44                  </span>
+								</div>
+							</div>
+							<div class="col-6 col-sm-4 col-md-2">
+								<div class="data">
+									<span class="data-title">Margem bruta <span class="data-tooltip" data-toggle="tooltip" title="" data-original-title="Lucro Bruto dividido pela Receita Líquida: Indica a porcentagem de cada R$1 de venda que sobrou após o custo dos produtos/serviços vendidos.">?</span></span>
+									<span class="data-value">39,1 <span class="porcentagem">%</span></span>
+								</div>
+							</div>
+							<div class="col-6 col-sm-4 col-md-2">
+								<div class="data">
+									<span class="data-title">Margem EBIT <span class="data-tooltip" data-toggle="tooltip" title="" data-original-title="EBIT dividido pela Receita Líquida: Indica a porcentagem de cada R$1 de venda que sobrou após o pagamento dos custos dos produtos/serviços vendidos, das despesas com vendas, gerais e administrativas.">?</span></span>
+									<span class="data-value">37,7 <span class="porcentagem">%</span></span>
+								</div>
+							</div>
+							<div class="col-6 col-sm-4 col-md-2">
+								<div class="data">
+									<span class="data-title">Margem líquida <span class="data-tooltip" data-toggle="tooltip" title="" data-original-title="Lucro Líquido dividido pela Receita Líquida.">?</span></span>
+									<span class="data-value">22,9 <span class="porcentagem">%</span></span>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+      </div>
+      <div class="row">
+				<div class="col">
+					<div class="frame">
+						<h2 class="session-title">Indicadores de endividamento</h2>
+						<div class="row">
+							<div class="col-6 col-sm-4 col-md-2">
+                <div class="data">
+                  <span class="data-title">Liquidez corrente <span class="data-tooltip" data-toggle="tooltip" title="" data-original-title="Ativo Circulante dividido pelo Passivo Circulante: Reflete a capacidade de pagamento da empresa no curto prazo.">?</span></span>
+                  <span class="data-value">0,91</span>
+                </div>
+              </div>
+							<div class="col-6 col-sm-4 col-md-2">
+                <div class="data">
+                  <span class="data-title">Dívida bruta/Patrim <span class="data-tooltip" data-toggle="tooltip" title="" data-original-title="Dívida Bruta total (Dívida+Debêntures) dividido pelo Patrimônio Líquido.">?</span></span>
+                  <span class="data-value">0,37</span>
+                </div>
+              </div>
+							<div class="col-6 col-sm-4 col-md-2">
+                <div class="data">
+                  <span class="data-title">Dívida líquida/Patrim <span class="data-tooltip" data-toggle="tooltip" title="" data-original-title="Dívida Bruta total (Dívida+Debêntures) menos caixa dividido pelo Patrimônio Líquido.">?</span></span>
+                  <span class="data-value">0,25</span>
+                </div>
+              </div>
+							<div class="col-6 col-sm-4 col-md-2">
+                <div class="data">
+                  <span class="data-title">Dívida líquida/EBITDA <span class="data-tooltip" data-toggle="tooltip" title="" data-original-title="Dívida Bruta total (Dívida+Debêntures) menos caixa dividido pelo EBITDA.">?</span></span>
+                  <span class="data-value">0,54</span>
+                </div>
+              </div>
+							<div class="col-6 col-sm-4 col-md-2">
+                <div class="data">
+                  <span class="data-title">PL/Ativos <span class="data-tooltip" data-toggle="tooltip" title="" data-original-title="Patrimônio Líquido sobre Ativos">?</span></span>
+                  <span class="data-value">0,43</span>
+                </div>
+              </div>
+            </div>
+					</div>
+				</div>
+			</div>
+
+
+
+        <div class="row">
+          <div class="col-sm">
+            <div class="frame">
+              <h2 class="session-title">Balanço patrimonial</h2>
+              <div class="row">
+                <div class="col-sm">
+                  <div class="data">
+                    <span class="data-title">Ativo <span class="data-tooltip" data-toggle="tooltip" title="Todos os bens, direitos e valores a receber de uma entidade.">?</span></span>
+                    <span class="data-value"><span class="currency">R$</span> 484.258.000.000</span>
+                  </div>
+                  <div class="data">
+                    <span class="data-title">Ativo circulante <span class="data-tooltip" data-toggle="tooltip" title="Bens ou direitos que podem ser convertido em dinheiro em curto prazo.">?</span></span>
+                    <span class="data-value"><span class="currency">R$</span> 75.183.000.000</span>
+                  </div>
+                  <div class="data">
+                    <span class="data-title">Disponibilidades <span class="data-tooltip" data-toggle="tooltip" title="Contas que representam bens numerários (Dinheiro).">?</span></span>
+                    <span class="data-value"><span class="currency">R$</span> 25.329.000.000</span>
+                  </div>
+                </div>
+                <div class="col-sm">
+                  <div class="data">
+                    <span class="data-title">Dívida bruta <span class="data-tooltip" data-toggle="tooltip" title="Dívida Bruta é obtida somando-se as dívidas de curto e longo prazo mais as debêntures de curto e longo prazo.">?</span></span>
+                    <span class="data-value"><span class="currency">R$</span> 77.281.000.000</span>
+                  </div>
+                  <div class="data">
+                    <span class="data-title">Dívida líquida <span class="data-tooltip" data-toggle="tooltip" title="Dívida Bruta menos Disponibilidades. Se este valor é negativo, significa que a empresa possui caixa líquido positivo.">?</span></span>
+                    <span class="data-value"><span class="currency">R$</span> 51.952.000.000</span>
+                  </div>
+                  <div class="data">
+                    <span class="data-title">Patrimônio líquido <span class="data-tooltip" data-toggle="tooltip" title="O patrimônio líquido representa os valores que os sócios ou acionistas têm na empresa em um determinado momento. No balanço patrimonial, a diferença entre o valor dos ativos e dos passivos e resultado de exercícios futuros representa o PL (Patrimônio Líquido), que é o valor contábil devido pela pessoa jurídica aos sócios ou acionistas.">?</span></span>
+                    <span class="data-value"><span class="currency">R$</span> 208.555.000.000</span>
+                  </div>
+                </div>
+              </div>
+            </div>				</div>
+          <div class="col-sm">
+            <div class="frame">
+              <h2 class="session-title">Demonstrativo de resultados</h2>
+              <div class="table-responsive">
+                <table class="table table-demonstrativo-resultados">
+                  <thead>
+                  <tr>
+                    <th></th>
+                    <th>Últimos 12 meses</th>
+                    <th>Últimos 3 meses</th>
+                  </tr>
+                  </thead>
+                <tbody>
+                  <tr>
+                    <th><span class="dt-title">Receita líquida <span class="data-tooltip" data-boundary="window" data-toggle="tooltip" title="Receita Líquida é a soma de todas as vendas da empresa em determinado período deduzido de devoluções, descontos e alguns impostos.">?</span></span></th>
+                    <td><span class="dt-value"><span class="currency">R$</span> 211.109.000.000</span></td>
+                    <td><span class="dt-value"><span class="currency">R$</span> 52.978.000.000</span></td>
+                  </tr>
+                  <tr>
+                    <th><span class="dt-title">EBIT <span class="data-tooltip" data-boundary="window" data-toggle="tooltip" title="Earnings Before Interest and Taxes - Lucro antes dos impostos e juros: Uma aproximação do lucro operacional da empresa. Fórmula utilizada: Lucro bruto - desp de vendas - desp administrativas">?</span></span></th>
+                    <td><span class="dt-value"><span class="currency">R$</span> 79.560.000.000</span></td>
+                    <td><span class="dt-value"><span class="currency">R$</span> 17.381.000.000</span></td>
+                  </tr>
+                  <tr>
+                    <th><span class="dt-title">Lucro líquido <span class="data-tooltip" data-boundary="window" data-toggle="tooltip" title="O que sobra das vendas após a dedução de todas as despesas.">?</span></span></th>
+                    <td><span class="dt-value"><span class="currency">R$</span> 48.251.000.000</span></td>
+                    <td><span class="dt-value"><span class="currency">R$</span> 13.386.000.000</span></td>
+                  </tr>
+                </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+  <script>
+  function formataDataDMY( data ) {
+    dia  = data.getDate().toString().padStart(2, '0'),
+    mes  = (data.getMonth()+1).toString().padStart(2, '0'), //+1 pois no getMonth Janeiro começa com zero.
+    ano  = data.getFullYear();
+    return dia+"/"+mes+"/"+ano;
+  }
+
+  var dataSerieCotacoes = [
+     [  1605078000000 , 42.6739  ],
+     [  1605164400000 , 42.0498  ],
+     [  1605250800000 , 42.4389  ],
+     [  1605510000000 , 43.5595  ],
+     [  1605596400000 , 44.9350  ],
+     [  1605682800000 , 44.5862  ],
+     [  1605769200000 , 45.4383  ],
+     [  1605855600000 , 45.9213  ],
+     [  1606114800000 , 47.8337  ],
+     [  1606201200000 , 50.1888  ],
+     [  1606287600000 , 50.6586  ],
+     [  1606374000000 , 51.3764  ],
+     [  1606460400000 , 52.6311  ],
+     [  1606719600000 , 52.3358  ],
+     [  1606806000000 , 54.5166  ],
+     [  1606892400000 , 53.5704  ],
+     [  1606978800000 , 52.9799  ],
+     [  1607065200000 , 55.0063  ],
+     [  1607324400000 , 55.6573  ],
+     [  1607410800000 , 55.6235  ],
+     [  1607497200000 , 55.4894  ],
+     [  1607583600000 , 57.0327  ],
+     [  1607670000000 , 56.9385  ],
+     [  1607929200000 , 56.0598  ],
+     [  1608015600000 , 56.6972  ],
+     [  1608102000000 , 57.8512  ],
+     [  1608188400000 , 58.5089  ],
+     [  1608274800000 , 58.9114  ],
+     [  1608534000000 , 58.2807  ],
+     [  1608620400000 , 58.3344  ],
+     [  1608706800000 , 58.6162  ],
+     [  1609138800000 , 58.5826  ],
+     [  1609225200000 , 58.4217  ],
+     [  1609311600000 , 58.6765  ],
+     [  1609743600000 , 61.3672  ],
+     [  1609830000000 , 62.4005  ],
+     [  1609916400000 , 64.1518  ],
+     [  1610002800000 , 68.6538  ],
+     [  1610089200000 , 68.4392  ],
+     [  1610348400000 , 68.4259  ],
+     [  1610434800000 , 66.5537  ],
+     [  1610521200000 , 64.5610  ],
+     [  1610607600000 , 65.6209  ],
+     [  1610694000000 , 62.7695  ],
+     [  1610953200000 , 63.2792  ],
+     [  1611039600000 , 63.1118  ],
+     [  1611126000000 , 61.9443  ],
+     [  1611212400000 , 62.6419  ],
+     [  1611298800000 , 62.5146  ],
+     [  1611644400000 , 61.5617  ],
+     [  1611730800000 , 59.8506  ],
+     [  1611817200000 , 61.1256  ],
+     [  1611903600000 , 59.0119  ],
+     [  1612162800000 , 61.2396  ],
+     [  1612249200000 , 58.8175  ],
+     [  1612335600000 , 60.6763  ],
+     [  1612422000000 , 59.9111  ],
+     [  1612508400000 , 62.1924  ],
+     [  1612767600000 , 63.0782  ],
+     [  1612854000000 , 63.2393  ],
+     [  1612940400000 , 63.5411  ],
+     [  1613026800000 , 62.4676  ],
+     [  1613113200000 , 62.9976  ],
+     [  1613545200000 , 64.6482  ],
+     [  1613631600000 , 65.3526  ],
+     [  1613718000000 , 65.6011  ],
+     [  1613977200000 , 63.9773  ],
+     [  1614063600000 , 65.0508  ],
+     [  1614150000000 , 65.7083  ],
+     [  1614236400000 , 64.2188  ],
+     [  1614322800000 , 63.4204  ],
+     [  1614582000000 , 66.1378  ],
+     [  1614668400000 , 68.1709  ],
+     [  1614754800000 , 67.3320  ],
+     [  1614841200000 , 66.3325  ],
+     [  1614927600000 , 70.1731  ],
+     [  1615186800000 , 69.7948  ],
+     [  1615273200000 , 69.0945  ],
+     [  1615359600000 , 68.0303  ],
+     [  1615446000000 , 69.8159  ],
+     [  1615532400000 , 68.2053  ],
+     [  1615791600000 , 67.7992  ],
+     [  1615878000000 , 67.5819  ],
+     [  1615964400000 , 68.5555  ],
+     [  1616050800000 , 67.3370  ],
+     [  1616137200000 , 66.3706  ],
+     [  1616396400000 , 65.2713  ],
+     [  1616482800000 , 63.7657  ],
+     [  1616569200000 , 65.2291  ],
+     [  1616655600000 , 64.7321  ],
+     [  1616742000000 , 66.8958  ],
+     [  1617001200000 , 68.6113  ],
+     [  1617087600000 , 67.9741  ],
+     [  1617174000000 , 68.6045  ],
+     [  1617260400000 , 68.1983  ],
+     [  1617606000000 , 72.3998  ],
+     [  1617692400000 , 71.4614  ],
+     [  1617778800000 , 73.2190  ],
+     [  1617865200000 , 73.1771  ],
+     [  1617951600000 , 72.1268  ],
+     [  1618210800000 , 72.4069  ],
+     [  1618297200000 , 72.5330  ],
+     [  1618383600000 , 74.9277  ],
+     [  1618470000000 , 75.7750  ],
+     [  1618556400000 , 76.0973  ],
+     [  1618815600000 , 75.4390  ],
+     [  1618902000000 , 74.3395  ],
+     [  1619074800000 , 74.3885  ],
+     [  1619161200000 , 75.6209  ],
+     [  1619420400000 , 76.0272  ],
+     [  1619506800000 , 77.1125  ],
+     [  1619593200000 , 78.3731  ],
+     [  1619679600000 , 78.3941  ],
+     [  1619766000000 , 76.3423  ],
+     [  1620025200000 , 75.9501  ],
+     [  1620111600000 , 77.0985  ],
+     [  1620198000000 , 77.5256  ],
+     [  1620284400000 , 80.5648  ],
+     [  1620370800000 , 80.8450  ],
+     [  1620630000000 , 80.3127  ],
+     [  1620716400000 , 83.1349  ],
+     [  1620802800000 , 80.0606  ],
+     [  1620889200000 , 78.7722  ],
+     [  1620975600000 , 77.4207  ],
+     [  1621234800000 , 79.4514  ],
+     [  1621321200000 , 80.2497  ],
+     [  1621407600000 , 78.6042  ],
+     [  1621494000000 , 77.8058  ],
+     [  1621580400000 , 76.6085  ],
+     [  1621839600000 , 76.8745  ],
+     [  1621926000000 , 74.9626  ],
+     [  1622012400000 , 77.1685  ],
+     [  1622098800000 , 77.7218  ],
+     [  1622185200000 , 78.1419  ],
+     [  1622444400000 , 80.3758  ],
+     [  1622530800000 , 79.2695  ],
+     [  1622617200000 , 80.3899  ],
+     [  1622790000000 , 79.0593  ],
+     [  1623049200000 , 78.2889  ],
+     [  1623135600000 , 76.9725  ],
+     [  1623222000000 , 78.5692  ],
+     [  1623308400000 , 78.2819  ],
+     [  1623394800000 , 80.0676  ],
+     [  1623654000000 , 79.6335  ],
+     [  1623740400000 , 78.0790  ],
+     [  1623826800000 , 75.7332  ],
+     [  1623913200000 , 74.1576  ],
+     [  1623999600000 , 76.3912  ],
+     [  1624258800000 , 77.1055  ],
+     [  1624345200000 , 78.0090  ],
+     [  1624431600000 , 79.1783  ],
+     [  1624518000000 , 79.2813  ],
+     [  1624604400000 , 80.2596  ],
+     [  1624863600000 , 78.9743  ],
+     [  1624950000000 , 80.3380  ],
+     [  1625036400000 , 80.8665  ],
+     [  1625122800000 , 79.4598  ],
+     [  1625209200000 , 81.1021  ],
+     [  1625468400000 , 80.8093  ],
+     [  1625554800000 , 81.2379  ],
+     [  1625641200000 , 81.4734  ],
+     [  1625727600000 , 81.1592  ],
+     [  1626073200000 , 82.1660  ],
+     [  1626159600000 , 82.6515  ],
+     [  1626246000000 , 82.2017  ],
+     [  1626332400000 , 82.4587  ],
+     [  1626418800000 , 80.9735  ],
+     [  1626678000000 , 80.0881  ],
+     [  1626764400000 , 80.7596  ],
+     [  1626850800000 , 81.6877  ],
+     [  1626937200000 , 81.9018  ],
+     [  1627023600000 , 81.4877  ],
+     [  1627282800000 , 83.2587  ],
+     [  1627369200000 , 81.5306  ],
+     [  1627455600000 , 83.7585  ],
+     [  1627542000000 , 82.5230  ],
+     [  1627628400000 , 77.6604  ],
+     [  1627887600000 , 77.7817  ],
+     [  1627974000000 , 80.4310  ],
+     [  1628060400000 , 80.3452  ],
+     [  1628146800000 , 77.8889  ],
+     [  1628233200000 , 78.3316  ],
+     [  1628492400000 , 77.8389  ],
+     [  1628578800000 , 78.5887  ],
+     [  1628665200000 , 78.0245  ],
+     [  1628751600000 , 77.9745  ],
+     [  1628838000000 , 77.3318  ],
+     [  1629097200000 , 77.6889  ],
+     [  1629183600000 , 76.4036  ],
+     [  1629270000000 , 73.8401  ],
+     [  1629356400000 , 69.6273  ],
+     [  1629442800000 , 69.6557  ],
+     [  1629702000000 , 68.6919  ],
+     [  1629788400000 , 71.1981  ],
+     [  1629874800000 , 71.0483  ],
+     [  1629961200000 , 70.1414  ],
+     [  1630047600000 , 71.8980  ],
+     [  1630306800000 , 71.4409  ],
+     [  1630393200000 , 70.4626  ],
+     [  1630479600000 , 70.5842  ],
+     [  1630566000000 , 70.3627  ],
+     [  1630652400000 , 70.4127  ],
+     [  1630911600000 , 69.3059  ],
+     [  1631084400000 , 67.8635  ],
+     [  1631170800000 , 67.6208  ],
+     [  1631257200000 , 67.6993  ],
+     [  1631516400000 , 67.6636  ],
+     [  1631602800000 , 67.1852  ],
+     [  1631689200000 , 65.5073  ],
+     [  1631775600000 , 62.7867  ],
+     [  1631862000000 , 61.5156  ],
+     [  1632121200000 , 59.4878  ],
+     [  1632207600000 , 60.0661  ],
+     [  1632294000000 , 62.2012  ],
+     [  1632380400000 , 62.2012  ],
+     [  1632466800000 , 61.2395  ],
+     [  1632726000000 , 62.1144  ],
+     [  1632812400000 , 59.0008  ],
+     [  1632898800000 , 59.7497  ],
+     [  1632985200000 , 60.0965  ],
+     [  1633071600000 , 60.0650  ],
+     [  1633330800000 , 59.5052  ],
+     [  1633417200000 , 59.0796  ],
+     [  1633503600000 , 60.7429  ],
+     [  1633590000000 , 62.5559  ],
+     [  1633676400000 , 62.9421  ],
+     [  1633935600000 , 64.3373  ],
+     [  1634108400000 , 62.4297  ],
+     [  1634194800000 , 62.4297  ],
+     [  1634281200000 , 63.5963  ],
+     [  1634540400000 , 62.9971  ],
+     [  1634626800000 , 62.2719  ],
+     [  1634713200000 , 60.2305  ],
+     [  1634799600000 , 59.2451  ],
+     [  1634886000000 , 59.9703  ],
+     [  1635145200000 , 60.6957  ],
+     [  1635231600000 , 60.0493  ],
+     [  1635318000000 , 58.6855  ],
+     [  1635404400000 , 58.0943  ],
+     [  1635490800000 , 56.4469  ],
+     [  1635750000000 , 57.0065  ],
+     [  1635922800000 , 52.6791  ],
+     [  1636009200000 , 52.0800  ],
+     [  1636095600000 , 50.5351  ],
+     [  1636354800000 , 53.2860  ],
+     [  1636441200000 , 51.9775  ],
+     [  1636527600000 , 51.7804  ],
+     [  1636614000000 , 53.6091  ],
+     [  1636700400000 , 53.8378  ],
+     [  1637046000000 , 52.2849  ],
+     [  1637132400000 , 51.2366  ],
+     [  1637218800000 , 49.1318  ],
+     [  1637305200000 , 50.4719  ],
+     [  1637564400000 , 53.2782  ],
+     [  1637650800000 , 54.6812  ],
+     [  1637737200000 , 55.9503  ],
+     [  1637823600000 , 55.5720  ],
+     [  1637910000000 , 54.1058  ],
+     [  1638169200000 , 54.7836  ],
+     [  1638255600000 , 55.1385  ],
+     [  1638342000000 , 55.3591  ],
+     [  1638428400000 , 57.9288  ],
+     [  1638514800000 , 56.6520  ],
+     [  1638774000000 , 59.7260  ],
+     [  1638860400000 , 60.1673  ],
+     [  1638946800000 , 59.7182  ],
+     [  1639033200000 , 59.2609  ],
+     [  1639119600000 , 59.6315  ],
+     [  1639378800000 , 61.3736  ],
+     [  1639465200000 , 61.3656  ],
+     [  1639551600000 , 61.0187  ],
+     [  1639638000000 , 63.4071  ],
+     [  1639724400000 , 62.4061  ],
+     [  1639983600000 , 61.7045  ],
+     [  1640070000000 , 63.3284  ],
+     [  1640156400000 , 62.9971  ],
+     [  1640242800000 , 62.3904  ],
+     [  1640588400000 , 62.2326  ],
+     [  1640674800000 , 60.5377  ],
+     [  1640761200000 , 60.8927  ],
+     [  1640847600000 , 61.4522  ],
+     [  1641193200000 , 61.4837  ],
+     [  1641279600000 , 60.7586  ],
+     [  1641366000000 , 61.3341  ],
+     [  1641452400000 , 62.5716  ],
+     [  1641538800000 , 66.2132  ],
+     [  1641798000000 , 65.4252  ],
+     [  1641884400000 , 66.6706  ],
+     [  1641970800000 , 67.3956  ],
+     [  1642057200000 , 66.3710  ],
+     [  1642143600000 , 66.7573  ],
+     [  1642402800000 , 66.4103  ],
+     [  1642489200000 , 68.0342  ],
+     [  1642575600000 , 69.5319  ],
+     [  1642662000000 , 68.3495  ],
+     [  1642748400000 , 66.9305  ],
+     [  1643007600000 , 66.1109  ],
+     [  1643094000000 , 66.2607  ],
+     [  1643180400000 , 66.4499  ],
+     [  1643266800000 , 66.5996  ],
+     [  1643353200000 , 65.9453  ],
+     [  1643612400000 , 63.7462  ],
+     [  1643698800000 , 67.2461  ],
+     [  1643785200000 , 67.6243  ],
+     [  1643871600000 , 67.5928  ],
+     [  1643958000000 , 69.3506  ],
+     [  1644217200000 , 71.0453  ],
+     [  1644303600000 , 72.0386  ],
+     [  1644390000000 , 72.0542  ],
+     [  1644476400000 , 73.9935  ],
+     [  1644562800000 , 72.4958  ],
+     [  1644822000000 , 72.1804  ],
+     [  1644908400000 , 70.0364  ],
+     [  1644994800000 , 70.5488  ],
+     [  1645081200000 , 67.5141  ],
+     [  1645167600000 , 67.6558  ],
+     [  1645426800000 , 67.7111  ],
+     [  1645513200000 , 68.8855  ],
+     [  1645599600000 , 68.1603  ],
+     [  1645686000000 , 69.0038  ],
+     [  1645772400000 , 72.7401  ],
+     [  1646204400000 , 78.5494  ],
+     [  1646290800000 , 78.5890  ],
+     [  1646377200000 , 80.3783  ],
+     [  1646636400000 , 82.8219  ],
+     [  1646722800000 , 79.1880  ],
+     [  1646809200000 , 77.1054  ],
+     [  1646895600000 , 79.6512  ],
+     [  1646982000000 , 79.2338  ],
+     [  1647241200000 , 74.9852  ],
+     [  1647327600000 , 72.8322  ],
+     [  1647414000000 , 74.6003  ],
+     [  1647500400000 , 77.1955  ],
+     [  1647586800000 , 78.6609  ],
+     [  1647846000000 , 80.8874  ],
+     [  1647932400000 , 79.0782  ],
+     [  1648018800000 , 78.9063  ],
+     [  1648105200000 , 79.3320  ],
+     [  1648191600000 , 77.9566  ],
+     [  1648450800000 , 78.0468  ],
+     [  1648537200000 , 77.3756  ],
+     [  1648623600000 , 78.4808  ],
+     [  1648710000000 , 78.2598  ],
+     [  1648796400000 , 79.3729  ],
+     [  1649055600000 , 80.1754  ],
+     [  1649142000000 , 77.8586  ],
+     [  1649228400000 , 79.0373  ],
+     [  1649314800000 , 79.5121  ],
+     [  1649401200000 , 77.8912  ],
+     [  1649660400000 , 76.9499  ],
+     [  1649746800000 , 76.4342  ],
+     [  1649833200000 , 76.4586  ],
+     [  1649919600000 , 75.3863  ],
+     [  1650265200000 , 74.1420  ],
+     [  1650351600000 , 71.7762  ],
+     [  1650438000000 , 69.9098  ],
+     [  1650610800000 , 65.8576  ],
+     [  1650870000000 , 64.7362  ],
+     [  1650956400000 , 63.8520  ],
+     [  1651042800000 , 67.2655  ],
+     [  1651129200000 , 68.9275  ],
+     [  1651215600000 , 68.1825  ],
+     [  1651474800000 , 67.8795  ],
+     [  1651561200000 , 67.5358  ],
+     [  1651647600000 , 66.9709  ],
+     [  1651734000000 , 65.7595  ],
+     [  1651820400000 , 65.2928  ],
+     [  1652079600000 , 62.6160  ],
+     [  1652166000000 , 61.8383  ],
+     [  1652252400000 , 64.4168  ],
+     [  1652338800000 , 63.7700  ],
+     [  1652425200000 , 63.6966  ],
+     [  1652684400000 , 65.6038  ],
+     [  1652770800000 , 65.3254  ],
+     [  1652857200000 , 63.6720  ],
+     [  1652943600000 , 65.3666  ],
+     [  1653030000000 , 66.5206  ],
+     [  1653289200000 , 67.8795  ],
+     [  1653375600000 , 68.7963  ],
+     [  1653462000000 , 69.0092  ],
+     [  1653548400000 , 68.9683  ],
+     [  1653634800000 , 70.1716  ],
+     [  1653894000000 , 70.9331  ],
+     [  1653980400000 , 70.5727  ],
+     [  1654066800000 , 72.2346  ],
+     [  1654153200000 , 73.5935  ],
+     [  1654239600000 , 72.4147  ],
+     [  1654498800000 , 72.4884  ],
+     [  1654585200000 , 74.1830  ],
+     [  1654671600000 , 71.6288  ],
+     [  1654758000000 , 69.2058  ],
+     [  1654844400000 , 69.2221  ],
+     [  1655103600000 , 67.0282  ],
+     [  1655190000000 , 66.8973  ],
+     [  1655276400000 , 66.8562  ],
+     [  1655449200000 , 63.3690  ],
+     [  1655708400000 , 61.8054  ],
+     [  1655794800000 , 62.2148  ],
+     [  1655881200000 , 61.6827  ],
+     [  1655967600000 , 59.4315  ],
+     [  1656054000000 , 61.0852  ],
+     [  1656313200000 , 63.8929  ],
+     [  1656399600000 , 65.0390  ],
+     [  1656486000000 , 64.4986  ],
+     [  1656572400000 , 62.6732  ],
+     [  1656658800000 , 61.4780  ],
+     [  1656918000000 , 61.1260  ],
+     [  1657004400000 , 60.8231  ],
+     [  1657090800000 , 61.3961  ],
+     [  1657177200000 , 63.1808  ],
+     [  1657263600000 , 61.7235  ],
+     [  1657522800000 , 59.6198  ],
+     [  1657609200000 , 59.7999  ],
+     [  1657695600000 , 59.5952  ],
+     [  1657782000000 , 55.6249  ],
+     [  1657868400000 , 55.9687  ],
+     [  1658127600000 , 56.2633  ],
+     [  1658214000000 , 56.3861  ],
+     [  1658300400000 , 55.1665  ],
+     [  1658386800000 , 56.1325  ],
+     [  1658473200000 , 56.6564  ],
+     [  1658732400000 , 57.7042  ],
+     [  1658818800000 , 57.5977  ],
+     [  1658905200000 , 57.7288  ],
+     [  1658991600000 , 57.8678  ],
+     [  1659078000000 , 57.0984  ],
+     [  1659337200000 , 55.7313  ],
+     [  1659423600000 , 57.5078  ],
+     [  1659510000000 , 55.2728  ],
+     [  1659596400000 , 54.9537  ],
+     [  1659682800000 , 55.6659  ],
+     [  1659942000000 , 56.1405  ],
+     [  1660028400000 , 57.3030  ],
+     [  1660114800000 , 57.3439  ],
+     [  1660201200000 , 59.3415  ],
+     [  1660287600000 , 59.8992  ],
+     [  1660546800000 , 58.6119  ],
+     [  1660633200000 , 60.0280  ],
+     [  1660719600000 , 58.5519  ],
+     [  1660806000000 , 58.1142  ],
+     [  1660892400000 , 57.4621  ],
+     [  1661151600000 , 56.6211  ],
+     [  1661238000000 , 60.2510  ],
+     [  1661324400000 , 58.3116  ],
+     [  1661410800000 , 59.4444  ],
+     [  1661497200000 , 58.5519  ],
+     [  1661756400000 , 57.4192  ],
+     [  1661842800000 , 55.7544  ],
+     [  1661929200000 , 55.3509  ],
+     [  1662015600000 , 54.8276  ],
+     [  1662102000000 , 53.9951  ],
+     [  1662361200000 , 55.9689  ],
+     [  1662447600000 , 54.6387  ],
+     [  1662620400000 , 55.3596  ],
+     [  1662706800000 , 59.6847  ],
+     [  1662966000000 , 60.1995  ],
+     [  1663052400000 , 58.5691  ],
+     [  1663138800000 , 57.4964  ],
+     [  1663225200000 , 58.6550  ],
+     [  1663311600000 , 58.5691  ],
+     [  1663570800000 , 60.4656  ],
+     [  1663657200000 , 59.5989  ],
+     [  1663743600000 , 58.7407  ],
+     [  1663830000000 , 60.0881  ],
+     [  1663916400000 , 58.8436  ],
+     [  1664175600000 , 58.3546  ],
+     [  1664262000000 , 58.0971  ],
+     [  1664348400000 , 58.6462  ],
+     [  1664434800000 , 58.7235  ],
+     [  1664521200000 , 61.8215  ],
+     [  1664780400000 , 63.5036  ],
+     [  1664866800000 , 65.0396  ],
+     [  1664953200000 , 66.0436  ],
+     [  1665039600000 , 64.8337  ],
+     [  1665126000000 , 64.7993  ],
+     [  1665385200000 , 63.4948  ],
+     [  1665471600000 , 63.0658  ],
+     [  1665644400000 , 61.9417  ],
+     [  1665730800000 , 59.9249  ],
+     [  1665990000000 , 60.6458  ],
+     [  1666076400000 , 61.7529  ],
+     [  1666162800000 , 61.0233  ],
+     [  1666249200000 , 61.8043  ],
+     [  1666335600000 , 63.6149  ],
+     [  1666594800000 , 61.7271  ],
+     [  1666681200000 , 61.7271  ],
+     [  1666767600000 , 63.1002  ],
+     [  1666854000000 , 60.8517  ],
+     [  1666940400000 , 57.8825  ],
+     [  1667199600000 , 57.6080  ],
+     [  1667286000000 , 59.3587  ],
+     [  1667458800000 , 57.6252  ],
+     [  1667545200000 , 62.0017  ],
+     [  1667804400000 , 61.6755  ],
+     [  1667890800000 , 63.5464  ],
+     [  1667977200000 , 62.7741  ],
+     [  1668063600000 , 63.9756  ],
+     [  1668150000000 , 70.6263  ],
+     [  1668409200000 , 71.4930  ],
+     [  1668582000000 , 70.7464  ],
+     [  1668668400000 , 71.3127  ],
+     [  1668754800000 , 69.3647  ],
+     [  1669014000000 , 68.5838  ],
+     [  1669100400000 , 68.7726  ],
+     [  1669186800000 , 69.4506  ],
+     [  1669273200000 , 69.8967  ],
+     [  1669359600000 , 69.4248  ],
+     [  1669618800000 , 69.7679  ],
+     [  1669705200000 , 72.4626  ],
+     [  1669791600000 , 73.5525  ],
+     [  1669878000000 , 73.9558  ],
+     [  1669964400000 , 74.4878  ],
+     [  1670223600000 , 74.4106  ],
+     [  1670310000000 , 75.4919  ],
+     [  1670396400000 , 72.8059  ],
+     [  1670482800000 , 73.6984  ],
+     [  1670569200000 , 76.1527  ],
+     [  1670828400000 , 73.8786  ],
+     [  1670914800000 , 74.1445  ],
+     [  1671001200000 , 74.7727  ],
+     [  1671087600000 , 75.0136  ],
+     [  1671174000000 , 73.7315  ],
+     [  1671433200000 , 73.4647  ],
+     [  1671519600000 , 73.7918  ],
+     [  1671606000000 , 74.2133  ],
+     [  1671692400000 , 73.7918  ],
+     [  1671778800000 , 74.2822  ],
+     [  1672038000000 , 74.9620  ],
+     [  1672124400000 , 76.7519  ],
+     [  1672210800000 , 76.5799  ],
+     [  1672297200000 , 76.4854  ],
+     [  1672642800000 , 76.9327  ],
+     [  1672729200000 , 76.7951  ],
+     [  1672815600000 , 76.9327  ],
+     [  1672902000000 , 78.2235  ],
+     [  1672988400000 , 79.4626  ],
+     [  1673247600000 , 79.5488  ],
+     [  1673334000000 , 80.5298  ],
+     [  1673420400000 , 80.2459  ],
+     [  1673506800000 , 80.6675  ],
+     [  1673593200000 , 80.7363  ],
+     [  1673852400000 , 79.3852  ],
+     [  1673938800000 , 79.2820  ],
+     [  1674025200000 , 80.3233  ],
+     [  1674111600000 , 80.6675  ],
+     [  1674198000000 , 80.8827  ],
+     [  1674457200000 , 81.1494  ],
+     [  1674543600000 , 82.0098  ],
+     [  1674630000000 , 82.7845  ],
+     [  1674716400000 , 84.3335  ],
+     [  1674802800000 , 82.0271  ],
+     [  1675062000000 , 81.7346  ],
+     [  1675148400000 , 81.3302  ],
+     [  1675234800000 , 80.4266  ],
+     [  1675321200000 , 76.7089  ],
+     [  1675407600000 , 76.5455  ],
+     [  1675666800000 , 75.5903  ],
+     [  1675753200000 , 76.0893  ],
+     [  1675839600000 , 76.3475  ],
+     [  1675926000000 , 76.0635  ],
+     [  1676012400000 , 74.6953  ],
+     [  1676271600000 , 74.6178  ],
+     [  1676358000000 , 74.9534  ],
+     [  1676444400000 , 76.5885  ],
+     [  1676530800000 , 76.7519  ],
+     [  1676617200000 , 75.7536  ],
+     [  1677049200000 , 75.1771  ],
+     [  1677135600000 , 74.8243  ],
+     [  1677222000000 , 73.1807  ],
+     [  1677481200000 , 73.1807  ],
+     [  1677567600000 , 73.4217  ],
+     [  1677654000000 , 76.7605  ],
+     [  1677740400000 , 76.5885  ],
+     [  1677826800000 , 76.8467  ],
+     [  1678086000000 , 74.1359  ],
+     [  1678172400000 , 73.4303  ],
+     [  1678258800000 , 74.1016  ],
+     [  1678345200000 , 73.1291  ],
+     [  1678431600000 , 72.8882  ],
+     [  1678690800000 , 73.1895  ],
+     [  1678777200000 , 73.8553  ],
+     [  1678863600000 , 71.6303  ],
+     [  1678950000000 , 71.8942  ],
+     [  1679036400000 , 72.7561  ],
+     [  1679295600000 , 73.3541  ],
+     [  1679382000000 , 72.7385  ],
+     [  1679468400000 , 71.8327  ],
+     [  1679554800000 , 69.9859  ],
+     [  1679641200000 , 69.1855  ],
+     [  1679900400000 , 69.0711  ],
+     [  1679986800000 , 69.8011  ],
+     [  1680073200000 , 70.8038  ],
+     [  1680159600000 , 71.9558  ],
+     [  1680246000000 , 70.6103  ],
+     [  1680505200000 , 70.6278  ],
+     [  1680591600000 , 68.6314  ],
+     [  1680678000000 , 67.6201  ],
+     [  1680764400000 , 67.4970  ],
+     [  1681110000000 , 68.7986  ],
+     [  1681196400000 , 72.4307  ],
+     [  1681282800000 , 70.8829  ],
+     [  1681369200000 , 69.9242  ],
+     [  1681455600000 , 69.3087  ],
+     [  1681714800000 , 68.4820  ],
+     [  1681801200000 , 69.0711  ],
+     [  1681887600000 , 67.0573  ],
+     [  1681974000000 , 65.6590  ],
+     [  1682319600000 , 63.2846  ],
+     [  1682406000000 , 61.5608  ],
+     [  1682492400000 , 61.7983  ],
+     [  1682578800000 , 63.1086  ],
+     [  1682665200000 , 63.6714  ],
+     [  1683010800000 , 61.1562  ],
+     [  1683097200000 , 60.6813  ],
+     [  1683183600000 , 58.7994  ],
+     [  1683270000000 , 60.7165  ],
+     [  1683529200000 , 61.5344  ],
+     [  1683615600000 , 62.1676  ],
+     [  1683702000000 , 60.9979  ],
+     [  1683788400000 , 59.8108  ],
+     [  1683874800000 , 59.8723  ],
+     [  1684134000000 , 60.7342  ],
+     [  1684220400000 , 59.4853  ],
+     [  1684306800000 , 61.4552  ],
+     [  1684393200000 , 61.5431  ],
+     [  1684479600000 , 60.8661  ],
+     [  1684738800000 , 59.8898  ],
+     [  1684825200000 , 58.5355  ],
+     [  1684911600000 , 57.2075  ],
+     [  1684998000000 , 57.0316  ],
+     [  1685084400000 , 58.3332  ],
+     [  1685343600000 , 57.8935  ],
+     [  1685430000000 , 56.5304  ],
+     [  1685516400000 , 56.1172  ],
+     [  1685602800000 , 57.3043  ],
+     [  1685689200000 , 59.7491  ],
+     [  1685948400000 , 59.2567  ],
+     [  1686034800000 , 59.4501  ],
+     [  1686121200000 , 60.3912  ],
+     [  1686294000000 , 60.1185  ],
+     [  1686553200000 , 59.0280  ],
+     [  1686639600000 , 59.6524  ],
+     [  1686726000000 , 60.6990  ],
+     [  1686812400000 , 61.1738  ],
+     [  1686898800000 , 61.2705  ],
+     [  1687158000000 , 61.0331  ],
+     [  1687244400000 , 59.4589  ],
+     [  1687330800000 , 58.8609  ],
+     [  1687417200000 , 58.5443  ],
+     [  1687503600000 , 57.9551  ],
+     [  1687762800000 , 58.0782  ],
+     [  1687849200000 , 58.7729  ],
+     [  1687935600000 , 56.9173  ],
+     [  1688022000000 , 57.6122  ],
+     [  1688108400000 , 56.4776  ],
+     [  1688367600000 , 58.2453  ],
+     [  1688454000000 , 57.9551  ],
+     [  1688540400000 , 57.4450  ],
+     [  1688626800000 , 57.0316  ],
+     [  1688713200000 , 57.5681  ],
+     [  1688972400000 , 56.6887  ],
+     [  1689058800000 , 58.5531  ],
+     [  1689145200000 , 58.9664  ],
+     [  1689231600000 , 60.3383  ],
+     [  1689318000000 , 60.3383  ],
+     [  1689577200000 , 59.6699  ],
+     [  1689663600000 , 59.2918  ],
+     [  1689750000000 , 59.1335  ],
+     [  1689836400000 , 59.2655  ],
+     [  1689922800000 , 59.6260  ],
+     [  1690182000000 , 61.4288  ],
+     [  1690268400000 , 63.3284  ],
+     [  1690354800000 , 63.1086  ],
+     [  1690441200000 , 61.9302  ],
+     [  1690527600000 , 59.4764  ],
+     [  1690786800000 , 60.8220  ],
+     [  1690873200000 , 59.9778  ],
+     [  1690959600000 , 59.0015  ],
+     [  1691046000000 , 59.3710  ],
+     [  1691132400000 , 59.4150  ],
+     [  1691391600000 , 59.7141  ],
+     [  1691478000000 , 59.3270  ],
+     [  1691564400000 , 58.7906  ],
+     [  1691650800000 , 58.0958  ],
+     [  1691737200000 , 57.6122  ],
+     [  1691996400000 , 55.8319  ],
+     [  1692082800000 , 55.2817  ],
+     [  1692169200000 , 55.0653  ],
+     [  1692255600000 , 55.8409  ],
+     [  1692342000000 , 55.2185  ],
+     [  1692601200000 , 55.2006  ],
+     [  1692687600000 , 56.4452  ],
+     [  1692774000000 , 56.8602  ],
+     [  1692860400000 , 56.1024  ],
+     [  1692946800000 , 55.9852  ],
+     [  1693206000000 , 56.7880  ],
+     [  1693292400000 , 58.6009  ],
+     [  1693378800000 , 58.6100  ],
+     [  1693465200000 , 58.7002  ],
+     [  1693551600000 , 62.1366  ],
+     [  1693810800000 , 62.5967  ],
+     [  1693897200000 , 62.3260  ],
+     [  1693983600000 , 61.3339  ],
+     [  1694156400000 , 60.1703  ],
+     [  1694415600000 , 61.0362  ],
+     [  1694502000000 , 60.9911  ],
+     [  1694588400000 , 60.7566  ],
+     [  1694674800000 , 63.2461  ],
+     [  1694761200000 , 62.7230  ],
+     [  1695020400000 , 61.9833  ],
+     [  1695106800000 , 62.1005  ],
+     [  1695193200000 , 62.5155  ],
+     [  1695279600000 , 60.8829  ],
+     [  1695366000000 , 61.3339  ],
+     [  1695625200000 , 60.0712  ],
+     [  1695711600000 , 59.1332  ],
+     [  1695798000000 , 59.2593  ],
+     [  1695884400000 , 60.1613  ],
+     [  1695970800000 , 60.9551  ],
+     [  1696230000000 , 60.4229  ],
+     [  1696316400000 , 60.0531  ],
+     [  1696402800000 , 59.4128  ],
+     [  1696489200000 , 59.4398  ],
+     [  1696575600000 , 60.3057  ],
+     [  1696834800000 , 59.8726  ],
+     [  1696921200000 , 60.2336  ],
+     [  1697007600000 , 60.7566  ],
+     [  1697180400000 , 60.0622  ],
+     [  1697439600000 , 60.7024  ],
+     [  1697526000000 , 61.1986  ],
+     [  1697612400000 , 58.9527  ],
+     [  1697698800000 , 58.1048  ],
+     [  1697785200000 , 56.5355  ],
+     [  1698044400000 , 56.4272  ],
+     [  1698130800000 , 57.7170  ],
+     [  1698217200000 , 57.6629  ],
+     [  1698303600000 , 58.8986  ],
+     [  1698390000000 , 60.9461  ],
+     [  1698649200000 , 61.4963  ],
+     [  1698735600000 , 62.2359  ],
+     [  1698822000000 , 63.4265  ],
+     [  1698994800000 , 64.2202  ],
+     [  1699254000000 , 64.4908  ],
+     [  1699340400000 , 63.2100  ],
+     [  1699426800000 , 63.2551  ],
+     [  1699513200000 , 63.5618  ],
+     [  1699599600000 , 64.5359  ],
+     [  1699858800000 , 64.4006  ],
+     [  1699945200000 , 66.3940  ],
+     [  1700118000000 , 66.8360  ],
+     [  1700204400000 , 66.9622  ],
+     [  1700463600000 , 68.6038  ],
+     [  1700550000000 , 70.2634  ],
+     [  1700636400000 , 69.4905  ],
+     [  1700722800000 , 69.0541  ],
+     [  1700809200000 , 68.4693  ],
+     [  1701068400000 , 68.0607  ],
+     [  1701154800000 , 68.2093  ],
+     [  1701241200000 , 68.1907  ],
+     [  1701327600000 , 68.5621  ],
+     [  1701414000000 , 69.8340  ],
+     [  1701673200000 , 68.2650  ],
+     [  1701759600000 , 67.6337  ],
+     [  1701846000000 , 67.1881  ],
+     [  1701932400000 , 67.4016  ],
+     [  1702018800000 , 67.5873  ],
+     [  1702278000000 , 67.6430  ],
+     [  1702364400000 , 67.7637  ],
+     [  1702450800000 , 67.7729  ],
+     [  1702537200000 , 68.1443  ],
+     [  1702623600000 , 68.5714  ],
+     [  1702882800000 , 68.8963  ],
+     [  1702969200000 , 69.3791  ],
+     [  1703055600000 , 69.1563  ],
+     [  1703142000000 , 71.4587  ],
+     [  1703228400000 , 70.9202  ],
+     [  1703574000000 , 71.1709  ],
+     [  1703660400000 , 71.8579  ],
+     [  1703746800000 , 71.6723  ],
+     [  1704178800000 , 71.5330  ],
+     [  1704265200000 , 71.1616  ],
+     [  1704351600000 , 70.2054  ],
+     [  1704438000000 , 69.3048  ],
+     [  1704697200000 , 68.9520  ],
+     [  1704783600000 , 68.0793  ],
+     [  1704870000000 , 67.0581  ],
+     [  1704956400000 , 67.4109  ],
+     [  1705042800000 , 66.5568  ],
+     [  1705302000000 , 66.4268  ],
+     [  1705388400000 , 65.5634  ],
+     [  1705474800000 , 64.4771  ],
+     [  1705561200000 , 64.0594  ],
+     [  1705647600000 , 63.2238  ],
+     [  1705906800000 , 62.9453  ],
+     [  1705993200000 , 64.2450  ],
+     [  1706079600000 , 64.8950  ],
+     [  1706166000000 , 63.4652  ],
+     [  1706252400000 , 64.5236  ],
+     [  1706511600000 , 64.2172  ],
+     [  1706598000000 , 63.8551  ],
+     [  1706684400000 , 62.9082  ],
+     [  1706770800000 , 62.6203  ],
+     [  1706857200000 , 61.3484  ],
+     [  1707116400000 , 60.8193  ],
+     [  1707202800000 , 61.8962  ],
+     [  1707289200000 , 62.0169  ],
+     [  1707375600000 , 61.4692  ],
+     [  1707462000000 , 61.1999  ],
+     [  1707894000000 , 61.0143  ],
+     [  1707980400000 , 60.8193  ],
+     [  1708066800000 , 62.8339  ],
+     [  1708326000000 , 62.6575  ],
+     [  1708412400000 , 61.2834  ],
+     [  1708498800000 , 61.7477  ],
+     [  1708585200000 , 62.4068  ],
+     [  1708671600000 , 62.5553  ],
+     [  1708930800000 , 61.0421  ],
+     [  1709017200000 , 62.6482  ],
+     [  1709103600000 , 61.9612  ],
+     [  1709190000000 , 62.1933  ],
+     [  1709276400000 , 62.0912  ],
+     [  1709535600000 , 61.9519  ],
+     [  1709622000000 , 61.1349  ],
+     [  1709708400000 , 61.9705  ],
+     [  1709794800000 , 61.7570  ],
+     [  1709881200000 , 61.2834  ],
+     [  1710140400000 , 59.3803  ],
+     [  1710226800000 , 59.0121  ],
+     [  1710313200000 , 59.3904  ],
+     [  1710399600000 , 58.6338  ],
+     [  1710486000000 , 57.9645  ],
+     [  1710745200000 , 59.0703  ],
+     [  1710831600000 , 59.5553  ],
+     [  1710918000000 , 59.9530  ],
+     [  1711004400000 , 59.8075  ],
+     [  1711090800000 , 59.1188  ],
+     [  1711350000000 , 58.9927  ],
+     [  1711436400000 , 58.2458  ],
+     [  1711522800000 , 58.7793  ],
+     [  1711609200000 , 59.0024  ],
+     [  1711954800000 , 59.3807  ],
+     [  1712041200000 , 60.0790  ],
+     [  1712127600000 , 59.2158  ],
+     [  1712214000000 , 58.5562  ],
+     [  1712300400000 , 57.9160  ],
+     [  1712559600000 , 61.0781  ],
+     [  1712646000000 , 60.6707  ],
+     [  1712732400000 , 59.7493  ],
+     [  1712818800000 , 60.0015  ],
+     [  1712905200000 , 59.7784  ],
+     [  1713164400000 , 60.1276  ],
+     [  1713250800000 , 59.5941  ],
+     [  1713337200000 , 60.2439  ],
+     [  1713423600000 , 60.4670  ],
+     [  1713510000000 , 61.4564  ],
+     [  1713769200000 , 61.4273  ],
+     [  1713855600000 , 60.8938  ],
+     [  1713942000000 , 61.6504  ],
+     [  1714028400000 , 60.3506  ],
+     [  1714114800000 , 60.8550  ],
+     [  1714374000000 , 61.9802  ],
+     [  1714460400000 , 61.3885  ],
+     [  1714633200000 , 61.9996  ],
+     [  1714719600000 , 62.0675  ],
+     [  1714978800000 , 62.2518  ],
+     [  1715065200000 , 62.6397  ],
+     [  1715151600000 , 62.0675  ],
+     [  1715238000000 , 62.5718  ],
+     [  1715324400000 , 62.3584  ],
+     [  1715583600000 , 62.7270  ],
+     [  1715670000000 , 62.6882  ],
+     [  1715756400000 , 62.5039  ],
+     [  1715842800000 , 62.9598  ],
+     [  1715929200000 , 64.1917  ],
+     [  1716188400000 , 64.1626  ],
+     [  1716274800000 , 63.9783  ],
+     [  1716361200000 , 63.4739  ],
+     [  1716447600000 , 63.0956  ],
+     [  1716534000000 , 63.1247  ],
+     [  1716793200000 , 63.3381  ],
+     [  1716879600000 , 61.9705  ],
+     [  1716966000000 , 61.3400  ],
+     [  1717138800000 , 61.3012  ],
+     [  1717398000000 , 60.0112  ],
+     [  1717484400000 , 59.4001  ],
+     [  1717570800000 , 58.5562  ],
+     [  1717657200000 , 59.3710  ],
+     [  1717743600000 , 58.5950  ],
+     [  1718002800000 , 59.2352  ],
+     [  1718089200000 , 59.1479  ],
+     [  1718175600000 , 58.3331  ],
+     [  1718262000000 , 59.0024  ],
+     [  1718348400000 , 58.7987  ],
+     [  1718607600000 , 58.5659  ],
+     [  1718694000000 , 58.8375  ],
+     [  1718780400000 , 59.0218  ],
+     [  1718866800000 , 59.5553  ],
+     [  1718953200000 , 59.0024  ],
+     [  1719212400000 , 59.0703  ],
+     [  1719298800000 , 58.8278  ],
+     [  1719385200000 , 59.5553  ],
+     [  1719471600000 , 59.7105  ],
+     [  1719558000000 , 60.3506  ],
+     [  1719817200000 , 61.2430  ],
+     [  1719903600000 , 61.0393  ],
+     [  1719990000000 , 62.2518  ],
+     [  1720076400000 , 61.9414  ],
+     [  1720162800000 , 61.6892  ],
+     [  1720422000000 , 61.2042  ],
+     [  1720508400000 , 61.1266  ],
+     [  1720594800000 , 60.3021  ],
+     [  1720681200000 , 60.1469  ],
+     [  1720767600000 , 61.0296  ],
+     [  1721026800000 , 61.0975  ],
+     [  1721113200000 , 60.4573  ],
+     [  1721199600000 , 59.8948  ],
+     [  1721286000000 , 59.3322  ],
+     [  1721372400000 , 59.2837  ],
+     [  1721631600000 , 59.2158  ],
+     [  1721718000000 , 58.4204  ],
+     [  1721804400000 , 58.7793  ],
+     [  1721890800000 , 58.7502  ],
+     [  1721977200000 , 59.6232  ],
+     [  1722236400000 , 59.7299  ],
+     [  1722322800000 , 58.4107  ],
+     [  1722409200000 , 59.7784  ],
+     [  1722495600000 , 58.4398  ],
+     [  1722582000000 , 57.6251  ],
+     [  1722841200000 , 57.0200  ],
+     [  1722927600000 , 57.3100  ],
+     [  1723014000000 , 57.2000  ],
+     [  1723100400000 , 56.8500  ],
+     [  1723186800000 , 57.0600  ],
+     [  1723446000000 , 56.7700  ],
+     [  1723532400000 , 56.5200  ],
+     [  1723618800000 , 56.0000  ],
+     [  1723705200000 , 56.2300  ],
+     [  1723791600000 , 56.0800  ],
+     [  1724050800000 , 56.9800  ],
+     [  1724137200000 , 57.2000  ],
+     [  1724223600000 , 58.3000  ],
+     [  1724310000000 , 58.3800  ],
+     [  1724396400000 , 57.4000  ],
+     [  1724655600000 , 58.0500  ],
+     [  1724742000000 , 59.8000  ],
+     [  1724828400000 , 59.3700  ],
+     [  1724914800000 , 59.3000  ],
+     [  1725001200000 , 59.5800  ],
+     [  1725260400000 , 58.7400  ],
+     [  1725346800000 , 56.5500  ],
+     [  1725433200000 , 56.9900  ],
+     [  1725519600000 , 57.4000  ],
+     [  1725606000000 , 56.6800  ],
+     [  1725865200000 , 56.6800  ],
+     [  1725951600000 , 56.0000  ],
+     [  1726038000000 , 57.5900  ],
+     [  1726124400000 , 58.1100  ],
+     [  1726210800000 , 58.5000  ],
+     [  1726470000000 , 58.5000  ],
+     [  1726556400000 , 58.2200  ],
+     [  1726642800000 , 57.5400  ],
+     [  1726729200000 , 58.2300  ],
+     [  1726815600000 , 57.3500  ],
+     [  1727074800000 , 57.5300  ],
+     [  1727161200000 , 60.3400  ],
+     [  1727247600000 , 60.6100  ],
+     [  1727334000000 , 64.2500  ],
+     [  1727420400000 , 63.9600  ],
+     [  1727679600000 , 63.5100  ],
+     [  1727766000000 , 63.8200  ],
+     [  1727852400000 , 64.1700  ],
+     [  1727938800000 , 62.9400  ],
+     [  1728025200000 , 62.4800  ],
+     [  1728284400000 , 63.0300  ],
+     [  1728370800000 , 61.1200  ],
+     [  1728457200000 , 60.9600  ],
+     [  1728543600000 , 61.2500  ],
+     [  1728630000000 , 62.1300  ],
+     [  1728889200000 , 61.9300  ],
+     [  1728975600000 , 61.1700  ],
+     [  1729062000000 , 62.3400  ],
+     [  1729148400000 , 60.7600  ],
+     [  1729234800000 , 60.5500  ],
+     [  1729494000000 , 60.3300  ],
+     [  1729580400000 , 60.4100  ],
+     [  1729666800000 , 59.3500  ],
+     [  1729753200000 , 59.7000  ],
+     [  1729839600000 , 61.7300  ],
+     [  1730098800000 , 62.8800  ],
+     [  1730185200000 , 62.6600  ],
+     [  1730271600000 , 62.4700  ],
+     [  1730358000000 , 62.0600  ],
+     [  1730444400000 , 62.0300  ],
+     [  1730703600000 , 62.6700  ],
+     [  1730790000000 , 62.1200  ],
+     [  1730876400000 , 61.4200  ],
+     [  1730962800000 , 63.5600  ],
+     [  1731049200000 , 60.6300  ],
+
+  ];
+
+  var maxXAxis = dataSerieCotacoes[dataSerieCotacoes.length-1][0] + 8*24*60*60*1000;
+  var optionsHistCotacoes = {
+    series: [
+      { name: "Cotações", data: dataSerieCotacoes },
+    ],
+    colors: ['#77b2d2'],
+    chart: {
+      type: 'line',
+      height: 290,
+      width: '95%',
+      toolbar : {
+        show: false,
+      },
+      sparkline: { enabled: false },
+      zoom: { enabled: false }
+    },
+    stroke: {
+      width: 2,
+      colors: '#4093bf',
+    },
+    xaxis: {
+      type: 'datetime',
+      show: true,
+      max : maxXAxis,
+      range : 4.2*365*24*60*60*1000,
+      labels :  {
+        show : true,
+      },
+      tooltip: {
+        enabled: false,
+      },
+      axisBorder: {
+        show: true
+      },
+      axisTicks: {
+        show: true
+      },
+      labels: {
+        datetimeFormatter: {
+          year: 'yyyy',
+          month: 'MMM \'yy',
+          day: 'dd MMM',
+          hour: 'HH:mm'
+        }
+      },
+    },
+    yaxis: {
+      min: 0,
+      forceNiceScale: true,
+      show: true,
+      labels :  {
+        show : true,
+      },
+      tickAmount: 8,
+      axisBorder: {
+        show: true
+      },
+      axisTicks: {
+        show: true
+      },
+      labels : {
+        formatter: function(val, index) {
+          return (val).toFixed(2).replace('.',',');
+        }
+      }
+    },
+    fill: {
+      /* opacity: 0.85,  */
+      type: ['solid'],
+    },
+    grid: {
+      padding: {
+       top: 0,
+       bottom: 0,
+       left: 0,
+       right: 0
+      }
+    },
+    legend: {
+      show: false,
+      position: 'bottom',
+      horizontalAlign: 'center',
+      offsetX: 0,
+      offsetY: 0,
+      markers: {
+        fillColors: ['#4093bf'],
+      }
+
+    },
+    dataLabels: {
+      enabled : false,
+      formatter : function (val, opts) {
+        return (val*100).toFixed(2).replace('.',',')+"%";
+      }
+    },
+    tooltip: {
+      enabled : true,
+      followCursor : false,
+      intersect : false,
+      onDatasetHover: {
+          highlightDataSeries: false,
+      },
+      custom: function({series, seriesIndex, dataPointIndex, w}) {
+          return '<div class="arrow_box" style="font-size:11px"><div>'+formataDataDMY(new Date(w.globals.seriesX[0][dataPointIndex])) +'</div>'+
+            '<div>' + (series[0][dataPointIndex]).toFixed(2).replace('.',',')+'</div>' +
+            '</div>';
+      },
+    },
+  };
+
+
+  var chartHistCotacoes = new ApexCharts(document.querySelector("#chartHistoricoCotacoes"), optionsHistCotacoes);
+  chartHistCotacoes.render();
+</script>
+	</div>
+		<div class="footer">
+		<div class="container">
+			<div class="fundamentus-simbolo">Fundamentus</div>
+			<ul class="menu-footer menu_">
+				<li><a href=".">Home</a></li>
+				<li><a href="termos-uso.php">Termos de uso</a></li>
+				<li><a href="politica-privacidade.php">Política de privacidade</a></li>
+				<li><a href="detalhes.php">Lista de Ativos</a></li>
+				<li><a href="contato.php">Fale conosco</a></li>
+			</ul>
+			<div class="footer-statement">
+        <p>Todas as informações disponibilizadas são obtidas a partir de fontes públicas, consideradas confiáveis e possuem caráter meramente informativo. Fundamentus não se responsabiliza por decisões tomadas a partir dessas informações.</p>
+			</div>
+			<p class="copyright">Copyright © 2021 Fundamentus. Todos os direitos reservados</p>
+			<a class="noema" href="https://www.noema.com.br" target="_blank" title="noema">noema</a>
+		</div>
+		<div class="fundamentus-bar"><span class="fb-azul"></span><span class="fb-verde"></span></div>
+	</div>
+      <div class="cookies aos-init aos-animate" data-aos="fade-right" data-aos-delay="50">
+      <p>Usamos cookies para garantir que você tenha a melhor experiência em nosso site. Consulte a <a href="politica-privacidade.php">política de privacidade</a>.</p>
+      <span class="cookies-aceitar">aceitar</span>
+    </div>
+
+	<a href="#" class="bt-scrolltop">topo</a>
+  <script  type="text/javascript" src="script/pvt.php" language="JavaScript" async></script>
+
+	<!-- Google tag (gtag.js) -->
+	<script async src="https://www.googletagmanager.com/gtag/js?id=G-MBRGJ9JF74"></script>
+	<script>
+	  window.dataLayer = window.dataLayer || [];
+	  function gtag(){dataLayer.push(arguments);}
+	  gtag('js', new Date());
+
+	  gtag('config', 'G-MBRGJ9JF74');
+	</script>
+<script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+<script src="assets/js/validate.js"></script>
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script src="assets/js/cycle2.js"></script>
+<script src="assets/js/fundamentus_v1.js"></script></body>
+</html>
