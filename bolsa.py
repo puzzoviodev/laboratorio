@@ -88,10 +88,10 @@ linha = 1
 while linha < 10:
     linha = linha + 1
     wsIndiRentabilidade = wbsaida['IndiRentabilidade']
-    wsIndValuation = wbsaida['IndValuation']
-    wsIndEndividamento = wbsaida['Endividamento']
-    wsIndiEficiência = wbsaida['IndiEficiência']
-    wsIndiCrescimento = wbsaida['IndiCrescimento']
+    #wsIndValuation = wbsaida['IndValuation']
+    #wsIndEndividamento = wbsaida['Endividamento']
+    #wsIndiEficiência = wbsaida['IndiEficiência']
+    #wsIndiCrescimento = wbsaida['IndiCrescimento']
 
     gravaCelulaIndiRentabilidade(linha,wsIndiRentabilidade,1)
 
