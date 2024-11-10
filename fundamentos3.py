@@ -36,7 +36,7 @@ frame_cotacao = soup.find('div', {'class': 'frame-cotacao'})
 
 information = frame_cotacao.find_all('div', {'class': 'data'})
 
-teste6 =information[0].find('span', {'class': 'data-value'}).text
+teste6 =information[4].find('span', {'class': 'data-value'}).text
 print('teste6' + str(teste6))
 print('ticket_symbol'  + ticket_symbol)
 print('company'  + company_name)
@@ -66,5 +66,7 @@ def teste(BeautifulSoup):
     """
 
     return soup.find('span', {'class': 'data-title'}).text
+
+
 
 
