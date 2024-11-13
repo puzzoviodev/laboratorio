@@ -23,7 +23,7 @@ headers = {
 
 #requisição no site
 data = requests.get(url, headers=headers, timeout=6).text
-
+#print("data" + str(data))
 #coletando o html
 soup = BeautifulSoup(data, "html.parser")
 
@@ -36,20 +36,20 @@ frame_cotacao = soup.find('div', {'class': 'frame-cotacao'})
 
 information = frame_cotacao.find_all('div', {'class': 'data'})
 
-teste6 =information[4].find('span', {'class': 'data-value'}).text
-print('teste6' + str(teste6))
-print('ticket_symbol'  + ticket_symbol)
-print('company'  + company_name)
+teste6 =information[0].find('span', {'class': 'data-value'}).text
+#print('teste6' + str(teste6))
+#print('ticket_symbol'  + ticket_symbol)
+#print('company'  + company_name)
 print('frame ' + str(frame_cotacao))
-
+print(information)
 
 
 market_valuation_title = soup.find('span', {'class': 'data-title'}).text
 market_valuation_tooltip = soup.find('span', {'class': 'data-tooltip'})['title']
 market_valuation_value = soup.find('span', {'class': 'data-value'}).text
-print(('market') + market_valuation_title )
-print('tool tip' + market_valuation_tooltip)
-print('value' + market_valuation_value)
+#print(('market') + market_valuation_title )
+#print('tool tip' + market_valuation_tooltip)
+#print('value' + market_valuation_value)
 
 
 
