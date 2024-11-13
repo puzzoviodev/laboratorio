@@ -98,7 +98,9 @@ if __name__ == "__main__":
                 dict_stocks[stock] = dict_stock
                 #print(dict_stocks)
                 #print(dict_stocks[stock])
-                print(dict_stocks[stock].get("Liq. corrente"))
+                print(stock)
+               # print(dict_stocks[stock].get("Liq. corrente"))
+                print(dict_stocks[stock].get("M. Bruta"))
             except:
                 # if we not get the information... just skip it
                 print(f'Could not get {stock} information')
