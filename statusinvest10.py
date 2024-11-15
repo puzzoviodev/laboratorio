@@ -26,7 +26,7 @@ wbsaida = openpyxl.Workbook()
 def criaPlanilaIndValuation(wbsaida):
     wbsaida.create_sheet('IndValuation')
     IndValuation = wbsaida['IndValuation']
-    IndValuation.append(['D.Y', 'P/L', ' PEG Ratio','P/VP','EV/EBITDA','EV/EBIT','P/EBITDA','P/EBIT','VPA','P/Ativo',
+    IndValuation.append(['ATIVO','D.Y', 'P/L', ' PEG Ratio','P/VP','EV/EBITDA','EV/EBIT','P/EBITDA','P/EBIT','VPA','P/Ativo',
                          'LPA','P/SR','P/Ativo Circ. Liq.'])
     return
 
@@ -34,30 +34,55 @@ def criaPlanilaIndValuation(wbsaida):
 def criaPlanilhaIndEndividamento(IndEndividamento):
     wbsaida.create_sheet('IndEndividamento')
     IndEndividamento = wbsaida['IndEndividamento']
-    IndEndividamento.append(['Dív. líquida/PL', 'Dív. líquida/EBITDA', 'Dív. líquida/EBIT','PL/Ativos','Passivos/Ativos','Liq. corrente'])
+    IndEndividamento.append(['ATIVO','Dív. líquida/PL', 'Dív. líquida/EBITDA', 'Dív. líquida/EBIT','PL/Ativos','Passivos/Ativos','Liq. corrente'])
     return
 
 def criaPlanilhaIndiEficiência(IndiEficiência):
     wbsaida.create_sheet('IndiEficiência')
     IndiEficiência = wbsaida['IndiEficiência']
-    IndiEficiência.append(['M. Bruta', 'M. EBITDA', 'M. EBIT', 'M. Líquida'])
+    IndiEficiência.append(['ATIVO','M. Bruta', 'M. EBITDA', 'M. EBIT', 'M. Líquida'])
     return
 
 def criaPlanilhaIndRentabilidade(IndiRentabilidade):
     wbsaida.create_sheet('IndiRentabilidade')
     IndiRentabilidade = wbsaida['IndiRentabilidade']
-    IndiRentabilidade.append(['ROE', 'ROA', 'ROIC','Giro ativos',''])
+    IndiRentabilidade.append(['ATIVO','ROE', 'ROA', 'ROIC','Giro ativos',''])
     return
 def criaPlanilhaIndiCrescimento(IndiCrescimento):
     wbsaida.create_sheet('IndiCrescimento')
     IndiCrescimento = wbsaida['IndiCrescimento']
-    IndiCrescimento.append(['CAGR Receitas 5 anos', 'CAGR Lucros 5 anos'])
+    IndiCrescimento.append(['ATIVO','CAGR Receitas 5 anos', 'CAGR Lucros 5 anos'])
     return
 
-def gravaIndiRentabilidade(wsIndiRentabilidade,linha,coluna,valor):
-        wsIndiRentabilidade.cell(row=linha, column=coluna, value=valor)
-        wsIndiRentabilidade.cell(row=linha, column=coluna, value=valor)
-        wsIndiRentabilidade.cell(row=linha, column=coluna, value=valor)
+def gravaIndiRentabilidade(wsIndiRentabilidade,linha,ATIVO,ROE,ROA,ROIC,Giroativos):
+        wsIndiRentabilidade.cell(row=linha, column=1, value=ATIVO)
+        wsIndiRentabilidade.cell(row=linha, column=2, value=ROE)
+        wsIndiRentabilidade.cell(row=linha, column=3, value=ROA)
+        wsIndiRentabilidade.cell(row=linha, column=4, value=ROIC)
+        wsIndiRentabilidade.cell(row=linha, column=5, value=Giroativos)
+
+def gravaIndiCrescimento(wsIndiCrescimento, linha, ATIVO, CAGRReceitas5, CAGRLucros5):
+        wsIndiCrescimento.cell(row=linha, column=1, value=ATIVO)
+        wsIndiCrescimento.cell(row=linha, column=2, value=CAGRReceitas5)
+        wsIndiCrescimento.cell(row=linha, column=3, value=CAGRLucros5)
+
+
+def gravaIndiEficiência(wsIndiEficiência, linha, ATIVO, MBruta, MEBITDA,MEBIT,MLiquida):
+    wsIndiEficiência.cell(row=linha, column=1, value=ATIVO)
+    wsIndiEficiência.cell(row=linha, column=2, value=MBruta)
+    wsIndiEficiência.cell(row=linha, column=3, value=MEBITDA)
+    wsIndiEficiência.cell(row=linha, column=4, value=MEBIT)
+    wsIndiEficiência.cell(row=linha, column=5, value=MLiquida)
+
+def gravaIndEndividamento(wsIndEndividamento, linha, ATIVO, MivliquidaPL, DivliquidaEBITDA,
+                                    DivliquidaEBIT, PLAtivos,PassivosAtivos,Liqcorrente):
+    wsIndEndividamento.cell(row=linha, column=1, value=ATIVO)
+    wsIndEndividamento.cell(row=linha, column=2, value=MivliquidaPL)
+    wsIndEndividamento.cell(row=linha, column=3, value=DivliquidaEBITDA)
+    wsIndEndividamento.cell(row=linha, column=4, value=DivliquidaEBIT)
+    wsIndEndividamento.cell(row=linha, column=5, value=PLAtivos)
+    wsIndEndividamento.cell(row=linha, column=6, value=PassivosAtivos)
+    wsIndEndividamento.cell(row=linha, column=7, value=Liqcorrente)
 #Silvio fim
 
 def get_stock_soup(stock):
@@ -154,22 +179,31 @@ if __name__ == "__main__":
 
 
                 wsIndiRentabilidade = wbsaida['IndiRentabilidade']
+                gravaIndiRentabilidade(wsIndiRentabilidade, linha,stock, ROE,ROA,ROIC,Giroativos)
 
-
-                gravaIndiRentabilidade(wsIndiRentabilidade, linha,1, ROE)
-                gravaIndiRentabilidade(wsIndiRentabilidade, linha, 2, ROA)
-                gravaIndiRentabilidade(wsIndiRentabilidade, linha, 3, ROIC)
-                gravaIndiRentabilidade(wsIndiRentabilidade, linha, 4, Giroativos)
                 #IndiCrescimento
 
                 print(dict_stocks[stock].get("CAGR Receitas 5 anos"))
                 print(dict_stocks[stock].get("CAGR Lucros 5 anos"))
+                CAGRReceitas5 = dict_stocks[stock].get("CAGR Receitas 5 anos")
+                CAGRLucros5  = dict_stocks[stock].get("CAGR Lucros 5 anos")
+                wsIndiCrescimento = wbsaida['IndiCrescimento']
+                gravaIndiCrescimento(wsIndiCrescimento, linha, stock, CAGRReceitas5, CAGRLucros5)
+
 
                 #IndiEficiência
                 print(dict_stocks[stock].get("M. Bruta"))
                 print(dict_stocks[stock].get("M. EBITDA"))
                 print(dict_stocks[stock].get("M. EBIT"))
                 print(dict_stocks[stock].get("M. Liquida"))
+
+                MBruta =  dict_stocks[stock].get("M. Bruta")
+                MEBITDA = dict_stocks[stock].get("M. EBITDA")
+                MEBIT =   dict_stocks[stock].get("M. EBIT")
+                MLiquida =dict_stocks[stock].get("M. Liquida")
+
+                wsIndiEficiência = wbsaida['IndiEficiência']
+                gravaIndiEficiência(wsIndiEficiência, linha, stock, MBruta, MEBITDA,MEBIT,MLiquida)
 
                 #IndEndividamento
                 print(dict_stocks[stock].get("Div. liquida/PL"))
@@ -178,6 +212,17 @@ if __name__ == "__main__":
                 print(dict_stocks[stock].get("PL/Ativos"))
                 print(dict_stocks[stock].get("Passivos/Ativos"))
                 print(dict_stocks[stock].get("Liq. corrente"))
+
+                DivliquidaPL = dict_stocks[stock].get("Div. liquida/PL")
+                DivliquidaEBITDA = dict_stocks[stock].get("Div. liquida/EBITDA")
+                DivliquidaEBIT = dict_stocks[stock].get("Div. liquida/EBIT")
+                PLAtivos = dict_stocks[stock].get("PL/Ativos")
+                PassivosAtivos = dict_stocks[stock].get("Passivos/Ativos")
+                Liqcorrente = dict_stocks[stock].get("Liq. corrente")
+
+                wsIndEndividamento = wbsaida['IndEndividamento']
+                gravaIndEndividamento(wsIndEndividamento, linha, stock, DivliquidaPL, DivliquidaEBITDA,
+                                    DivliquidaEBIT, PLAtivos,PassivosAtivos,Liqcorrente)
 
                # IndValuation
                 print(dict_stocks[stock].get("D.Y"))
