@@ -1,3 +1,7 @@
+import openpyxl
+from openpyxl.styles import Color, PatternFill, Font, Border
+from openpyxl.formatting.rule import ColorScaleRule, CellIsRule, FormulaRule
+import requests
 import re
 import time
 import numpy as np
@@ -10,16 +14,52 @@ from selenium.webdriver.common.by import By
 # define selenium webdriver options
 options = webdriver.ChromeOptions()
 
-
-
-#options.add_argument("--headless")  # Ativa o modo headless
-#options.add_argument("--no-sandbox")  # Necessário em alguns ambientes, como servidores
-options.add_argument("--disable-dev-shm-usage")  # Para evitar problemas de memória
-
+import warnings
+url = 'https://fundamentus.com.br/detalhes.php?papel=DASA3&interface=classic&interface=mobile'
 # create selenium webdriver instance
 driver = webdriver.Chrome(options=options)
+warnings.filterwarnings('ignore')
+headers = {
+    'User-Agent'      : 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/71.0.3578.98 Safari/537.36',
+    'Accept'          : 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
+    'Accept-Language' : 'en-US,en;q=0.5',
+    'DNT'             : '1',
+    'Connection'      : 'close'
+}
+wbsaida = openpyxl.Workbook()
+
+#cria planilhas
+#cria planilhas
+def criaPlanilaIndValuation(wbsaida):
+    wbsaida.create_sheet('IndValuation')
+    IndValuation = wbsaida['IndValuation']
+    IndValuation.append(['D.Y', 'P/L', ' PEG Ratio','P/VP','EV/EBITDA','EV/EBIT','P/EBITDA','P/EBIT','VPA','P/Ativo',
+                         'LPA','P/SR','P/Ativo Circ. Liq.'])
+    return
 
 
+def criaPlanilhaIndEndividamento(IndEndividamento):
+    wbsaida.create_sheet('IndEndividamento')
+    IndEndividamento = wbsaida['IndEndividamento']
+    IndEndividamento.append(['Dív. líquida/PL', 'Dív. líquida/EBITDA', 'Dív. líquida/EBIT','PL/Ativos','Passivos/Ativos','Liq. corrente'])
+    return
+
+def criaPlanilhaIndiEficiência(IndiEficiência):
+    wbsaida.create_sheet('IndiEficiência')
+    IndiEficiência = wbsaida['IndiEficiência']
+    IndiEficiência.append(['M. Bruta', 'M. EBITDA', 'M. EBIT', 'M. Líquida'])
+    return
+
+def criaPlanilhaIndRentabilidade(IndiRentabilidade):
+    wbsaida.create_sheet('IndiRentabilidade')
+    IndiRentabilidade = wbsaida['IndiRentabilidade']
+    IndiRentabilidade.append(['ROE', 'ROA', 'ROIC','Giro ativos',''])
+    return
+def criaPlanilhaIndiCrescimento(IndiCrescimento):
+    wbsaida.create_sheet('IndiCrescimento')
+    IndiCrescimento = wbsaida['IndiCrescimento']
+    IndiCrescimento.append(['CAGR Receitas 5 anos', 'CAGR Lucros 5 anos'])
+    return
 def get_stock_soup(stock):
     ''' Get raw html from a stock '''
 
@@ -38,8 +78,12 @@ def get_stock_soup(stock):
 def soup_to_dict(soup):
     '''Get all data from stock soup and return as a dictionary '''
     keys, values = [], []
+    data = requests.get(url, headers=headers, timeout=6).text
+    soup10 = BeautifulSoup(data, "html.parser")
 
-    # get divs from stock
+    # get divs from stock <h1 class="lh-4" title="ATOM3 - ATOM EMPREENDIMENTOS">ATOM3 - <small>ATOM EMPREENDIMENTOS</small></h1>
+    company_name = soup10.find('span', {'class': 'acao-nome'}).text
+    print ("vary  " + company_name)
     soup1 = soup.find('div', class_='pb-3 pb-md-5')
     soup2 = soup.find('div', class_='card rounded text-main-green-dark')
     soup3 = soup.find('div', class_='indicator-today-container')
@@ -49,7 +93,7 @@ def soup_to_dict(soup):
     teste = soup2.find_all('strong','value')
 
    # print(teste)
-   # print(soups)
+    #print(soups)
 
 
     for s in soups:
@@ -90,19 +134,30 @@ def soup_to_dict(soup):
     #print(d)
     return d
 
+def gravaIndiRentabilidade(wsIndiRentabilidade,teste,coluna,valor):
+    print(" teste  "  + valor)
+    wsIndiRentabilidade.cell(row=teste, column=coluna, value=valor)
+
+    return
 
 if __name__ == "__main__":
     dict_stocks = {}
 
     # start timer
     start = time.time()
+    criaPlanilaIndValuation(wbsaida)
+    criaPlanilhaIndEndividamento(wbsaida)
+    criaPlanilhaIndiEficiência(wbsaida)
+    criaPlanilhaIndRentabilidade(wbsaida)
+    criaPlanilhaIndiCrescimento(wbsaida)
 
     # read file with stocks codes to get stock information
     with open('stocks.txt', 'r') as f:
         stocks = f.read().splitlines()
-
+        linha = 1
         # get stock information and create excel sheet
         for stock in stocks:
+
             try:
                 # get data and transform into dictionary
                 soup = get_stock_soup(stock)
@@ -111,6 +166,12 @@ if __name__ == "__main__":
                 print(stock)
                 print(dict_stocks[stock].get("Liq. corrente"))
                 print(dict_stocks[stock].get("M. Bruta"))
+                wsIndiRentabilidade = wbsaida['IndiRentabilidade']
+                linha = linha + 1
+                gravaIndiRentabilidade(wsIndiRentabilidade, linha,2, dict_stocks[stock].get("Liq. corrente"))
+                #gravaIndiRentabilidade(wsIndiRentabilidade,teste, 2, stock)
+
+
             except:
                 # if we not get the information... just skip it
                 print(f'Could not get {stock} information')
@@ -129,5 +190,8 @@ if __name__ == "__main__":
 
     # end timer
     end = time.time()
-
+    wbsaida.save("exemplo2.xlsx")
     print(f'Brasilian stocks information got in {int(end-start)} s')
+
+
+

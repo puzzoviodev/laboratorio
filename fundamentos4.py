@@ -58,7 +58,7 @@ while imposto < ws.max_row:
             company_name = soup.find('span', {'class': 'acao-nome'}).text
             frame_cotacao = soup.find('div', {'class': 'frame-cotacao'})
 
-           # print('company' + company_name) wwers
+           print('company' + company_name)
       except AttributeError:
             print('erro')
             #ticket_symbol = "teste"

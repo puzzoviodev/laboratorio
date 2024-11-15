@@ -31,6 +31,7 @@ soup = BeautifulSoup(data, "html.parser")
 #tabela = soup.find('table')
 ticket_symbol = soup.find('h1', {'class': 'acao-papel'}).text
 company_name = soup.find('span', {'class': 'acao-nome'}).text
+print(company_name)
 frame_cotacao = soup.find('div', {'class': 'frame-cotacao'})
 
 
@@ -40,8 +41,8 @@ teste6 =information[0].find('span', {'class': 'data-value'}).text
 #print('teste6' + str(teste6))
 #print('ticket_symbol'  + ticket_symbol)
 #print('company'  + company_name)
-print('frame ' + str(frame_cotacao))
-print(information)
+#print('frame ' + str(frame_cotacao))
+#print(information)
 
 
 market_valuation_title = soup.find('span', {'class': 'data-title'}).text
