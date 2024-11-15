@@ -83,6 +83,28 @@ def gravaIndEndividamento(wsIndEndividamento, linha, ATIVO, MivliquidaPL, Divliq
     wsIndEndividamento.cell(row=linha, column=5, value=PLAtivos)
     wsIndEndividamento.cell(row=linha, column=6, value=PassivosAtivos)
     wsIndEndividamento.cell(row=linha, column=7, value=Liqcorrente)
+
+def gravaIndValuation(wsIndValuation, linha, ATIVO, DY, PL,PEGRatio,
+                                      PVP, EVEBITDA, EVEBIT, PEBITDA,PEBIT,VPA,
+                                      PAtivo,LPA,PSR,PCapGiro,PAtivoCircLiq):
+
+        wsIndValuation.cell(row=linha, column=1, value=ATIVO)
+        wsIndValuation.cell(row=linha, column=2, value=DY)
+        wsIndValuation.cell(row=linha, column=3, value=PL)
+        wsIndValuation.cell(row=linha, column=4, value=PEGRatio)
+        wsIndValuation.cell(row=linha, column=5, value=PVP)
+        wsIndValuation.cell(row=linha, column=6, value=EVEBITDA)
+        wsIndValuation.cell(row=linha, column=7, value=EVEBIT)
+        wsIndValuation.cell(row=linha, column=8, value=PEBITDA)
+        wsIndValuation.cell(row=linha, column=9, value=PEBIT)
+        wsIndValuation.cell(row=linha, column=10, value=VPA)
+        wsIndValuation.cell(row=linha, column=11, value=PAtivo)
+        wsIndValuation.cell(row=linha, column=12, value=LPA)
+        wsIndValuation.cell(row=linha, column=13, value=PSR)
+        wsIndValuation.cell(row=linha, column=14, value=PCapGiro)
+        wsIndValuation.cell(row=linha, column=15, value=PAtivoCircLiq)
+
+
 #Silvio fim
 
 def get_stock_soup(stock):
@@ -240,6 +262,25 @@ if __name__ == "__main__":
                 print(dict_stocks[stock].get("P/Cap. Giro"))
                 print(dict_stocks[stock].get("P/Ativo Circ. Liq."))
 
+                DY             = dict_stocks[stock].get("D.Y")
+                PL             = dict_stocks[stock].get("P/L")
+                PEGRatio       = dict_stocks[stock].get("PEG Ratio")
+                PVP            = dict_stocks[stock].get("P/VP")
+                EVEBITDA       = dict_stocks[stock].get("EV/EBITDA")
+                EVEBIT         = dict_stocks[stock].get("EV/EBIT")
+                PEBITDA        = dict_stocks[stock].get("P/EBITDA")
+                PEBIT          = dict_stocks[stock].get("P/EBIT")
+                VPA            = dict_stocks[stock].get("VPA")
+                PAtivo         = dict_stocks[stock].get("P/Ativo")
+                LPA            = dict_stocks[stock].get("LPA")
+                PSR            = dict_stocks[stock].get("P/SR")
+                PCapGiro       = dict_stocks[stock].get("P/Cap. Giro")
+                PAtivoCircLiq  = dict_stocks[stock].get("P/Ativo Circ. Liq.")
+
+                wsIndValuation = wbsaida['IndValuation']
+                gravaIndValuation(wsIndValuation, linha, stock, DY, PL,PEGRatio,
+                                      PVP, EVEBITDA, EVEBIT, PEBITDA,PEBIT,VPA,
+                                      PAtivo,LPA,PSR,PCapGiro,PAtivoCircLiq)
                 # Diversas
 
                 print(dict_stocks[stock].get("Valor atual"))
