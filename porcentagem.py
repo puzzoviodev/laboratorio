@@ -12,10 +12,10 @@ ws['C1'] = 'Porcentagem'
 
 # Adicionar dados
 dados = [
-    ('Alice', 85),
-    ('Bob', 92),
-    ('Charlie', 78),
-    ('Diana', 88)
+    ('Alice', '93.46%'),
+    ('Bob', '92'),
+    ('Charlie', '78'),
+    ('Diana', '88')
 ]
 
 # Preencher os dados e formatar a coluna de porcentagem
@@ -29,7 +29,7 @@ for i, (nome, nota) in enumerate(dados, start=2):
 
     # Definir o formato de porcentagem
     porcentagem_cell.number_format = '0%'  # Formato de porcentagem
-
+    print(str(porcentagem))
 # Salvar a planilha
 wb.save("notas_alunos.xlsx")
 

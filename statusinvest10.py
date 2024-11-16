@@ -1,3 +1,4 @@
+
 import openpyxl
 from openpyxl.styles import Color, PatternFill, Font, Border
 from openpyxl.formatting.rule import ColorScaleRule, CellIsRule, FormulaRule
@@ -53,7 +54,12 @@ def criaPlanilhaIndiCrescimento(IndiCrescimento):
     IndiCrescimento = wbsaida['IndiCrescimento']
     IndiCrescimento.append(['ATIVO','CAGR Receitas 5 anos', 'CAGR Lucros 5 anos'])
     return
-
+def criaPlanilaDiveros(wbsaida):
+    wbsaida.create_sheet('IndDiversos')
+    IndValuation = wbsaida['IndDiversos']
+    IndValuation.append(['ATIVO','D.Y', 'P/L', ' PEG Ratio','P/VP','EV/EBITDA','EV/EBIT','P/EBITDA','P/EBIT','VPA','P/Ativo',
+                         'LPA','P/SR','P/Ativo Circ. Liq.'])
+    return
 def gravaIndiRentabilidade(wsIndiRentabilidade,linha,ATIVO,ROE,ROA,ROIC,Giroativos):
         wsIndiRentabilidade.cell(row=linha, column=1, value=ATIVO)
         wsIndiRentabilidade.cell(row=linha, column=2, value=ROE)
@@ -68,6 +74,35 @@ def gravaIndiCrescimento(wsIndiCrescimento, linha, ATIVO, CAGRReceitas5, CAGRLuc
 
 
 def gravaIndiEficiência(wsIndiEficiência, linha, ATIVO, MBruta, MEBITDA,MEBIT,MLiquida):
+   # MBruta = float(MBruta.strip('%')) /100
+   # MEBITDA = float(MEBITDA.strip('%')) /100
+   # MEBIT = float(MEBIT.strip('%')) /100
+   # MLiquida = float(MLiquida.strip('%')) /100
+
+
+   # Condicional corrigida
+    if is_null_zero_or_spaces(MBruta):
+        MBruta   = 0
+    else:
+       MBruta = float(MBruta.strip('%')) /100
+    if is_null_zero_or_spaces(MEBITDA):
+       MEBITDA =0
+    else:
+        MEBITDA = float(MEBITDA.strip('%')) / 100
+
+
+    if is_null_zero_or_spaces(MEBIT):
+       MEBIT = 0
+    else:
+
+      MEBIT = float(MEBIT.strip('%')) / 100
+
+    if is_null_zero_or_spaces(MLiquida):
+       MLiquida =0
+    else:
+        MLiquida = float(MLiquida.strip('%')) / 100
+
+
     wsIndiEficiência.cell(row=linha, column=1, value=ATIVO)
     wsIndiEficiência.cell(row=linha, column=2, value=MBruta)
     wsIndiEficiência.cell(row=linha, column=3, value=MEBITDA)
@@ -121,6 +156,20 @@ def get_stock_soup(stock):
 
     return soup
 
+def is_null_zero_or_spaces(variable):
+       # Verifica se a variável é None
+       if variable is None:
+           return True
+       # Verifica se a variável é zero (0)
+       elif variable == 0:
+           return True
+       # Verifica se a variável é uma string e contém apenas espaços
+       elif isinstance(variable, str) and variable.strip() == '':
+           return True
+       elif variable == '-%':
+           return True
+       else:
+           return False
 
 def soup_to_dict(soup):
     '''Get all data from stock soup and return as a dictionary '''
@@ -137,19 +186,22 @@ def soup_to_dict(soup):
     for s in soups:
         # get only titles from a div and append to keys
         titles = s.find_all('h3', re.compile('title m-0[^"]*'))
+
         titles = [t.get_text() for t in titles]
         keys += titles
-
+        print(keys)
         # get only numbers from a div and append to values
         numbers = s.find_all('strong', re.compile('value[^"]*'))
         numbers = [n.get_text()for n in numbers]
         values += numbers
-
+        print(keys)
+        print(values)
     # remove unused key and insert needed keys
     keys.remove('PART. IBOV')
     keys.insert(6, 'TAG ALONG')
     keys.insert(7, 'LIQUIDEZ MEDIA DIARIA')
-
+    print(keys)
+    print(values)
     # clean keys list
     keys = [k.replace('\nhelp_outline', '').strip() for k in keys]
     keys = [k for k in keys if k != '']
@@ -293,11 +345,6 @@ if __name__ == "__main__":
                 print(dict_stocks[stock].get("LIQUIDEZ MEDIA DIARIA"))
                 print(dict_stocks[stock].get("PARTICIPACAO NO IBOV"))
                 print(dict_stocks[stock].get("MERCADO DE OPCOES"))
-
-
-
-
-
                 print(dict_stocks[stock].get("Patrimonio liquido"))
                 print(dict_stocks[stock].get("Ativos"))
                 print(dict_stocks[stock].get("Ativo circulante"))
