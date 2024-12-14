@@ -6,7 +6,7 @@ try:
         print(f"informacoes do banco {informacoesdobanco}")
         print("conectado!")
         comandosql = conexao.cursor()
-        cd = int(input("codigo da diciplina : "))
+        cd = int(input("codigo da diciplina2 : "))
         #teste = (f"insert into univap.diciplinas (codigodisc,nomedisc values ({cd},'{nd}')")
         #print(teste)
         comandosql.execute(f" select * from univap.diciplinas where codigodisc =  ({cd})")
