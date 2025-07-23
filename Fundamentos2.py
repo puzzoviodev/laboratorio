@@ -4,7 +4,7 @@ from openpyxl.formatting.rule import ColorScaleRule, CellIsRule, FormulaRule
 import requests
 
 from bs4 import BeautifulSoup
-
+# teste
 import warnings
 warnings.filterwarnings('ignore')
 
